@@ -1,0 +1,67 @@
+# VN dishes with a recipe appear in "Vietnamese food in Germany".
+# DE dishes appear in "Familiar German food" through links.yaml.
+- slug: pho-bo
+  region: VN
+  name: { vi: Phở bò, en: Beef pho }
+  description:
+    vi: Nước dùng bò trong, thơm hồi quế, ăn với bánh phở và rau thơm.
+    en: Clear beef broth scented with star anise, served with rice noodles and herbs.
+  dishType: noodle
+  methods: [simmer]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 0, herbal: 2 }
+  keyIngredients: [beef-shank, rice-noodles, star-anise, fish-sauce]
+  timeMin: 180
+  costPerServingEur: 3.5
+  equipment: [stove, one-pot]
+  recipe:
+    servings: 4
+    ingredients:
+      - { ingredient: beef-shank, amount: 800 g }
+      - { ingredient: rice-noodles, amount: 400 g }
+      - { ingredient: onion, amount: "2" }
+      - { ingredient: star-anise, amount: "4" }
+      - { ingredient: fish-sauce, amount: 3 EL }
+      - { ingredient: thai-basil, amount: 1 bunch, optional: true }
+    steps:
+      - vi: Chần bò qua nước sôi 5 phút, đổ nước, rửa sạch.
+        en: Blanch the beef for 5 minutes, discard the water and rinse.
+      - vi: Nướng hành tây và hoa hồi trên chảo khô đến khi thơm.
+        en: Char the onions and toast the star anise in a dry pan until fragrant.
+      - vi: Ninh bò với hành, hồi trong 2,5 lít nước khoảng 2,5 giờ, vớt bọt thường xuyên.
+        en: Simmer the beef with onion and star anise in 2.5 L water for about 2.5 hours, skimming often.
+      - vi: Nêm nước mắm, trụng bánh phở, chan nước dùng và thêm rau thơm.
+        en: Season with fish sauce, cook the noodles, ladle broth over and add herbs.
+  source: curated
+  reviewStatus: draft
+
+- slug: bo-kho
+  region: VN
+  name: { vi: Bò kho, en: Vietnamese beef stew }
+  description:
+    vi: Bò hầm sả, hồi, màu đỏ, ăn với bánh mì.
+    en: Beef stewed with lemongrass and star anise, eaten with baguette.
+  dishType: braise
+  methods: [braise]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 1, herbal: 1 }
+  keyIngredients: [beef-shank, star-anise, fish-sauce]
+  timeMin: 120
+  costPerServingEur: 3
+  equipment: [stove, one-pot]
+  source: curated
+  reviewStatus: draft
+
+- slug: gulaschsuppe
+  region: DE
+  name: { vi: Súp gulasch, en: Goulash soup, de: Gulaschsuppe }
+  description:
+    vi: Súp bò hầm với hành tây và paprika, đậm đà, ăn với bánh mì.
+    en: Beef stewed with onion and paprika, rich and warming, eaten with bread.
+  dishType: soup
+  methods: [braise, simmer]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 1, herbal: 0 }
+  keyIngredients: [beef-shank, onion, paprika-powder]
+  timeMin: 120
+  costPerServingEur: 2.5
+  equipment: [stove, one-pot]
+  source: curated
+  reviewStatus: draft

@@ -1,0 +1,60 @@
+{
+  "site": {
+    "name": "Nhớ Nhà",
+    "tagline": "Homesick? Try this dish.",
+    "description": "Food ideas for Vietnamese students in Germany: German dishes that taste familiar, and Vietnamese dishes cooked with ingredients you can buy in Germany."
+  },
+  "modes": {
+    "familiar": {
+      "title": "Familiar German food",
+      "description": "German dishes Vietnamese people tend to enjoy, and why they feel familiar."
+    },
+    "homeCooking": {
+      "title": "Vietnamese food in Germany",
+      "description": "Vietnamese dishes with ingredients from Rewe, Lidl, Aldi or an Asia-Markt, plus substitutes."
+    }
+  },
+  "dish": {
+    "tastesLike": "Tastes like",
+    "whyFamiliar": "Why it feels familiar",
+    "minutes": "min",
+    "perServing": "/ serving",
+    "draft": "Draft, not yet reviewed",
+    "back": "Back",
+    "flavor": "Flavor",
+    "ingredients": "Ingredients",
+    "steps": "Steps",
+    "servings": "servings",
+    "optional": "optional",
+    "whereToBuy": "Where to buy",
+    "swap": "Can't find it? Use",
+    "fidelity": "Closeness",
+    "equipment": "Equipment",
+    "notFoundHere": "No store info yet"
+  },
+  "nav": {
+    "home": "Home",
+    "switchLanguage": "Tiếng Việt"
+  },
+  "flavor": {
+    "sweet": "Sweet",
+    "sour": "Sour",
+    "salty": "Salty",
+    "umami": "Savory (umami)",
+    "spicy": "Spicy",
+    "herbal": "Herbal"
+  },
+  "equipment": {
+    "stove": "Stove",
+    "oven": "Oven",
+    "one-pot": "One pot",
+    "rice-cooker": "Rice cooker",
+    "microwave": "Microwave"
+  },
+  "likelihood": {
+    "usually": "usually",
+    "sometimes": "sometimes",
+    "seasonal": "seasonal",
+    "rare": "rare"
+  }
+}

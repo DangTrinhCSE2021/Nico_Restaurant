@@ -1,0 +1,53 @@
+# Availability is a best guess until checked in a real store; set lastVerified when you do.
+- slug: beef-shank
+  name: { vi: Bắp bò, en: Beef shank, de: Rinderbeinscheibe }
+  aliases: [Beinscheibe, Rindergulasch]
+  category: protein
+  availability:
+    - { store: rewe, likelihood: usually }
+    - { store: edeka, likelihood: usually }
+    - { store: aldi, likelihood: sometimes, productHint: Rindergulasch }
+- slug: rice-noodles
+  name: { vi: Bánh phở khô, en: Flat rice noodles, de: Reisbandnudeln }
+  category: noodle-rice
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: sometimes, productHint: Reisnudeln, Asia-Regal }
+- slug: fish-sauce
+  name: { vi: Nước mắm, en: Fish sauce, de: Fischsauce }
+  category: sauce
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: sometimes, productHint: Asia-Regal }
+- slug: star-anise
+  name: { vi: Hoa hồi, en: Star anise, de: Sternanis }
+  category: spice
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: usually, productHint: Gewürzregal }
+    - { store: edeka, likelihood: usually, productHint: Gewürzregal }
+- slug: paprika-powder
+  name: { vi: Bột ớt paprika, en: Paprika powder, de: Paprikapulver }
+  category: spice
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: onion
+  name: { vi: Hành tây, en: Onion, de: Zwiebel }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: thai-basil
+  name: { vi: Húng quế, en: Thai basil, de: Thai-Basilikum }
+  category: herb
+  availability:
+    - { store: asia-markt, likelihood: usually }
+- slug: basil
+  name: { vi: Lá basil Âu, en: Basil, de: Basilikum }
+  category: herb
+  availability:
+    - { store: lidl, likelihood: usually, productHint: Topf }
+    - { store: rewe, likelihood: usually, productHint: Topf }

@@ -1,0 +1,60 @@
+{
+  "site": {
+    "name": "Nhớ Nhà",
+    "tagline": "Nhớ nhà? Thử món này.",
+    "description": "Gợi ý món ăn cho sinh viên Việt Nam ở Đức: món Đức có vị quen thuộc, và món Việt nấu bằng nguyên liệu mua ở Đức."
+  },
+  "modes": {
+    "familiar": {
+      "title": "Món Đức vị quen",
+      "description": "Món Đức mà người Việt dễ ăn, kèm lý do vì sao thấy quen."
+    },
+    "homeCooking": {
+      "title": "Nấu món Việt ở Đức",
+      "description": "Món Việt với nguyên liệu mua ở Rewe, Lidl, Aldi, Asia-Markt và cách thay thế."
+    }
+  },
+  "dish": {
+    "tastesLike": "Vị giống",
+    "whyFamiliar": "Vì sao thấy quen",
+    "minutes": "phút",
+    "perServing": "/ phần",
+    "draft": "Bản nháp, chưa được kiểm duyệt",
+    "back": "Quay lại",
+    "flavor": "Hương vị",
+    "ingredients": "Nguyên liệu",
+    "steps": "Cách làm",
+    "servings": "phần",
+    "optional": "không bắt buộc",
+    "whereToBuy": "Mua ở đâu",
+    "swap": "Không có? Thay bằng",
+    "fidelity": "Độ giống",
+    "equipment": "Dụng cụ",
+    "notFoundHere": "Chưa có thông tin cửa hàng"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "switchLanguage": "English"
+  },
+  "flavor": {
+    "sweet": "Ngọt",
+    "sour": "Chua",
+    "salty": "Mặn",
+    "umami": "Đậm (umami)",
+    "spicy": "Cay",
+    "herbal": "Rau thơm"
+  },
+  "equipment": {
+    "stove": "Bếp",
+    "oven": "Lò nướng",
+    "one-pot": "Một nồi",
+    "rice-cooker": "Nồi cơm điện",
+    "microwave": "Lò vi sóng"
+  },
+  "likelihood": {
+    "usually": "thường có",
+    "sometimes": "đôi khi",
+    "seasonal": "theo mùa",
+    "rare": "hiếm"
+  }
+}

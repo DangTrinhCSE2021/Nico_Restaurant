@@ -1,0 +1,9 @@
+- original: thai-basil
+  substitute: basil
+  dish: pho-bo
+  fidelity: 3
+  notes:
+    vi: Basil Âu ngọt hơn, ít mùi hồi. Dùng tạm được nếu không có Asia-Markt.
+    en: European basil is sweeter with less anise note. Fine if there's no Asia-Markt nearby.
+  source: curated
+  reviewStatus: draft

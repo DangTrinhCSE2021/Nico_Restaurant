@@ -1,0 +1,36 @@
+# Store chains in Germany. priceLevel: 1 = cheapest, 3 = priciest.
+- slug: lidl
+  name: Lidl
+  kind: discounter
+  priceLevel: 1
+  notes:
+    vi: Rẻ, đủ đồ cơ bản. Thỉnh thoảng có tuần hàng châu Á.
+    en: Cheap basics. Occasional Asian-themed weeks.
+- slug: aldi
+  name: Aldi
+  kind: discounter
+  priceLevel: 1
+  notes:
+    vi: Rẻ, ít lựa chọn nhưng thịt và rau ổn.
+    en: Cheap with a small range, decent meat and vegetables.
+- slug: rewe
+  name: Rewe
+  kind: supermarket
+  priceLevel: 2
+  notes:
+    vi: Nhiều lựa chọn hơn, có kệ đồ quốc tế.
+    en: Wider range, has an international aisle.
+- slug: edeka
+  name: Edeka
+  kind: supermarket
+  priceLevel: 2
+  notes:
+    vi: Tương tự Rewe, quầy thịt tươi tốt.
+    en: Similar to Rewe, good fresh meat counter.
+- slug: asia-markt
+  name: Asia-Markt
+  kind: asia-market
+  priceLevel: 2
+  notes:
+    vi: Có gần như mọi nguyên liệu Việt. Tìm "Asia Markt" trên Google Maps.
+    en: Has almost every Vietnamese ingredient. Search "Asia Markt" on Google Maps.
