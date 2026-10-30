@@ -142,5 +142,27 @@
     "intro": "Ingredient photos come from Wikimedia Commons under free licenses. Thanks to their authors.",
     "source": "Original",
     "footerLink": "Photo credits and licenses"
+  },
+  "shopping": {
+    "title": "Shopping list",
+    "description": "Ingredients for the dishes you picked, grouped by store. The list is saved on this device.",
+    "add": "Add to shopping list",
+    "added": "Added to shopping list",
+    "viewList": "View list",
+    "headerLabel": "Shopping list",
+    "preferredStore": "My supermarket",
+    "noPreference": "Cheapest",
+    "dishesInList": "Dishes in your list",
+    "remove": "Remove dish",
+    "progress": "{done} of {total} bought",
+    "optional": "optional",
+    "unknownStore": "Store unknown",
+    "share": "Share",
+    "copied": "Copied",
+    "clearChecked": "Untick all",
+    "clearAll": "Clear list",
+    "empty": "Your list is empty. Open a Vietnamese dish and tap \"Add to shopping list\".",
+    "emptyCta": "Pick a dish to cook",
+    "shareTitle": "Shopping list - Nhớ Nhà"
   }
 }

@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Be_Vietnam_Pro } from "next/font/google";
+import { DEFAULT_PAIR } from "@/domain/pairs";
 import { routes } from "@/domain/routes";
 import { hasLocale, locales, type Locale } from "@/i18n/config";
 import { LanguageSwitch } from "@/components/language-switch";
+import { ShoppingHeaderLink } from "@/components/shopping-ui";
 import { getDictionary } from "@/i18n/dictionaries";
 import "../globals.css";
 
@@ -44,6 +46,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
               label={dict.nav.switchLanguage}
               className="text-sm text-muted underline-offset-4 hover:underline"
             />
+            <ShoppingHeaderLink href={routes.shoppingList(lang, DEFAULT_PAIR)} label={dict.shopping.headerLabel} />
           </div>
         </header>
         <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-12">{children}</main>

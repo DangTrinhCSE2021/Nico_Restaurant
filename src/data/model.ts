@@ -1,6 +1,9 @@
 import type { DishFacets } from "@/domain/filters";
+import { t } from "@/domain/localize";
 import type { Dish, DishLink, Ingredient, RegionPair, Store, Substitution } from "@/domain/schema";
+import type { ShopData } from "@/domain/shopping";
 import type { StoreKind } from "@/domain/vocab";
+import type { Locale } from "@/i18n/config";
 import type { PairData } from "./load";
 
 // Indexed, cross-linked view of one pair's seed data, plus the shopping rules that pages share.
@@ -168,3 +171,20 @@ export function buildModel(data: PairData): PairModel {
   };
 }
 
+
+// Compact, localized snapshot for the client-side shopping list.
+export function shoppingData(model: PairModel, lang: Locale): ShopData {
+  return {
+    stores: model.stores.map(({ slug, name, kind, priceLevel }) => ({ slug, name, kind, priceLevel })),
+    ingredients: model.ingredients.map((i) => ({
+      slug: i.slug,
+      name: t(i.name, lang),
+      de: i.name.de,
+      image: i.image?.file,
+      availability: i.availability,
+    })),
+    dishes: model.dishes.flatMap((d) =>
+      d.recipe ? [{ slug: d.slug, name: t(d.name, lang), ingredients: d.recipe.ingredients }] : [],
+    ),
+  };
+}

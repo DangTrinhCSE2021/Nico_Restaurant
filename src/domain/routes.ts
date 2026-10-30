@@ -10,6 +10,7 @@ export const routes = {
   familiar: (lang: Locale, pair: string) => `/${lang}/${pair}/familiar`,
   homeCooking: (lang: Locale, pair: string) => `/${lang}/${pair}/home-cooking`,
   dish: (lang: Locale, pair: string, slug: string) => `/${lang}/${pair}/dish/${slug}`,
+  shoppingList: (lang: Locale, pair: string) => `/${lang}/${pair}/shopping-list`,
   // With an ingredient/store slug, jumps to its card on the page.
   ingredients: (lang: Locale, pair: string, ingredient?: string) =>
     `/${lang}/${pair}/ingredients${hash(ingredient && ingredientAnchor(ingredient))}`,

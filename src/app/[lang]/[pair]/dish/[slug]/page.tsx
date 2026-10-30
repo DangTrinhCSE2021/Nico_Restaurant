@@ -8,6 +8,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { BackLink } from "@/components/back-link";
 import { FlavorBars } from "@/components/flavor-bars";
 import { IngredientRow } from "@/components/ingredient-row";
+import { AddToListButton } from "@/components/shopping-ui";
 
 export function generateStaticParams() {
   return allPairs().flatMap((pair) => pair.dishes.map((dish) => ({ pair: pair.slug, slug: dish.slug })));
@@ -50,6 +51,11 @@ export default async function DishPage({ params }: PageProps<"/[lang]/[pair]/dis
           {dict.dish.equipment}: {dish.equipment.map((e) => dict.equipment[e]).join(", ")}
         </p>
         {draft && <p className="mt-1 text-sm text-accent">{dict.dish.draft}</p>}
+        {dish.recipe && (
+          <div className="mt-4">
+            <AddToListButton dish={dish.slug} listHref={routes.shoppingList(lang, pair)} labels={dict.shopping} />
+          </div>
+        )}
       </div>
 
       {links.length > 0 && (

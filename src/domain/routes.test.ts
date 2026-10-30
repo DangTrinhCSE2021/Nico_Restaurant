@@ -8,6 +8,7 @@ describe("routes", () => {
     expect(routes.familiar("vi", "vn-de")).toBe("/vi/vn-de/familiar");
     expect(routes.homeCooking("en", "vn-de")).toBe("/en/vn-de/home-cooking");
     expect(routes.dish("vi", "vn-de", "pho-bo")).toBe("/vi/vn-de/dish/pho-bo");
+    expect(routes.shoppingList("en", "vn-de")).toBe("/en/vn-de/shopping-list");
   });
 
   it("links to the ingredient guide, optionally at one ingredient's card", () => {

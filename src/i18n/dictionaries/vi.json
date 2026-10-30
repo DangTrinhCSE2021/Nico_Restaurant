@@ -142,5 +142,27 @@
     "intro": "Ảnh nguyên liệu lấy từ Wikimedia Commons theo giấy phép tự do. Cảm ơn các tác giả.",
     "source": "Ảnh gốc",
     "footerLink": "Nguồn ảnh và giấy phép"
+  },
+  "shopping": {
+    "title": "Danh sách đi chợ",
+    "description": "Nguyên liệu của các món bạn chọn, chia theo cửa hàng. Danh sách được lưu trên điện thoại này.",
+    "add": "Thêm vào danh sách đi chợ",
+    "added": "Đã thêm vào danh sách",
+    "viewList": "Xem danh sách",
+    "headerLabel": "Danh sách đi chợ",
+    "preferredStore": "Siêu thị quen",
+    "noPreference": "Rẻ nhất",
+    "dishesInList": "Món trong danh sách",
+    "remove": "Bỏ món",
+    "progress": "Đã mua {done}/{total}",
+    "optional": "không bắt buộc",
+    "unknownStore": "Chưa rõ mua ở đâu",
+    "share": "Chia sẻ",
+    "copied": "Đã sao chép",
+    "clearChecked": "Bỏ đánh dấu",
+    "clearAll": "Xóa hết",
+    "empty": "Danh sách đang trống. Mở một món Việt và bấm \"Thêm vào danh sách đi chợ\".",
+    "emptyCta": "Chọn món để nấu",
+    "shareTitle": "Danh sách đi chợ - Nhớ Nhà"
   }
 }
