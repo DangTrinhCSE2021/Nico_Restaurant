@@ -3,7 +3,8 @@
 import { useState, type ReactNode } from "react";
 import { matchesQuery } from "@/domain/search";
 
-export type SearchItem = { key: string; searchText: string; card: ReactNode };
+// `anchorId` is the element ID that links (e.g. from dish pages) jump to.
+export type SearchItem = { key: string; anchorId: string; searchText: string; card: ReactNode };
 export type SearchGroup = { key: string; label: string; items: SearchItem[] };
 
 type Labels = { searchLabel: string; searchPlaceholder: string; count: string; noResults: string };
@@ -44,7 +45,7 @@ export function IngredientSearch({ groups, labels }: { groups: SearchGroup[]; la
           </h2>
           <ul className="flex flex-col gap-3">
             {group.items.map((item) => (
-              <li key={item.key} id={item.key} className="scroll-mt-4">
+              <li key={item.key} id={item.anchorId} className="scroll-mt-4">
                 {item.card}
               </li>
             ))}

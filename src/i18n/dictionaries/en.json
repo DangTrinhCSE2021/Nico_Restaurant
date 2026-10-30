@@ -16,6 +16,10 @@
     "guide": {
       "title": "Ingredients and substitutes",
       "description": "Vietnamese ingredients, their German shop names, where to buy them and what to use when you can't find them."
+    },
+    "stores": {
+      "title": "Shopping in Germany",
+      "description": "What each store is good for, where to find Vietnamese ingredients, and which dishes you can shop for in one trip."
     }
   },
   "dish": {
@@ -110,5 +114,33 @@
       "vegetable": "Vegetables",
       "other": "Other"
     }
+  },
+  "stores": {
+    "title": "Shopping in Germany",
+    "description": "What each store is good for, where to find Vietnamese ingredients, and which dishes you can shop for in one trip.",
+    "kinds": {
+      "supermarket": "Supermarket",
+      "discounter": "Discount supermarket",
+      "asia-market": "Asian grocery",
+      "online": "Online"
+    },
+    "priceLevels": [
+      "Cheap",
+      "Mid-priced",
+      "Pricey"
+    ],
+    "onlyHere": "Only available here",
+    "oneTrip": "Shop for these in one trip",
+    "oneTripHint": "Every main ingredient (or a swap for it) is usually stocked here.",
+    "usually": "Usually has {count} ingredients",
+    "sometimes": "Sometimes has",
+    "findAsiaMarkt": "Find an Asia-Markt near you",
+    "disclaimer": "Store information is an estimate and varies by branch. Spotted a mistake? Let us know."
+  },
+  "credits": {
+    "title": "Photo credits",
+    "intro": "Ingredient photos come from Wikimedia Commons under free licenses. Thanks to their authors.",
+    "source": "Original",
+    "footerLink": "Photo credits and licenses"
   }
 }

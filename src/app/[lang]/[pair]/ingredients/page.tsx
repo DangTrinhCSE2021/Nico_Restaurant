@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { listPairs, loadPair } from "@/data/load";
-import { dishHref, findDish, findIngredient, homeIngredients } from "@/data/queries";
+import { dishHref, findDish, findIngredient, homeIngredients, storesHref } from "@/data/queries";
+import { ingredientAnchor } from "@/domain/anchors";
 import { t } from "@/domain/localize";
 import type { Ingredient } from "@/domain/schema";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { IngredientImage } from "@/components/ingredient-image";
 import { StoreBadges, SwapList, type Swap } from "@/components/ingredient-parts";
 import { IngredientSearch, type SearchGroup } from "@/components/ingredient-search";
 
@@ -59,22 +61,28 @@ export default async function IngredientsPage({ params }: PageProps<"/[lang]/[pa
         const swaps = swapsFor(ingredient.slug);
         return {
           key: ingredient.slug,
+          anchorId: ingredientAnchor(ingredient.slug),
           searchText: [ingredient.name.vi, ingredient.name.en, ingredient.name.de, ...ingredient.aliases].join(" "),
           card: (
             <article className="rounded-2xl border border-border bg-card p-4">
-              <div className="flex flex-wrap items-baseline gap-x-2">
-                <h3 className="font-bold">{t(ingredient.name, lang)}</h3>
-                <span lang="de" className="text-sm text-muted">
-                  {[ingredient.name.de, ...ingredient.aliases].join(" / ")}
-                </span>
-                {asiaMarketOnly(ingredient) && (
-                  <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-white">
-                    {dict.guide.asiaOnly}
-                  </span>
-                )}
-              </div>
-              <div className="mt-2">
-                <StoreBadges ingredient={ingredient} stores={data.stores} dict={dict} />
+              <div className="flex gap-3">
+                <IngredientImage ingredient={ingredient} alt={t(ingredient.name, lang)} size={72} />
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <h3 className="font-bold">{t(ingredient.name, lang)}</h3>
+                    <span lang="de" className="text-sm text-muted">
+                      {[ingredient.name.de, ...ingredient.aliases].join(" / ")}
+                    </span>
+                    {asiaMarketOnly(ingredient) && (
+                      <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-white">
+                        {dict.guide.asiaOnly}
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-2">
+                    <StoreBadges ingredient={ingredient} stores={data.stores} storesHref={storesHref(lang, pair)} dict={dict} />
+                  </div>
+                </div>
               </div>
               {swaps.length > 0 && (
                 <div className="mt-3 text-sm">
@@ -105,7 +113,16 @@ export default async function IngredientsPage({ params }: PageProps<"/[lang]/[pa
         <h1 className="text-2xl font-bold">{dict.guide.title}</h1>
         <p className="mt-1 text-muted">{dict.guide.description}</p>
       </header>
-      <IngredientSearch groups={groups} labels={dict.guide} />
+      <IngredientSearch
+        groups={groups}
+        // Only what the client needs: the rest of the dictionary would bloat the page payload.
+        labels={{
+          searchLabel: dict.guide.searchLabel,
+          searchPlaceholder: dict.guide.searchPlaceholder,
+          count: dict.guide.count,
+          noResults: dict.guide.noResults,
+        }}
+      />
     </div>
   );
 }

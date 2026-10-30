@@ -14,37 +14,71 @@ export const timeOptions = ["15", "30", "60"] as const;
 export const kitchenOptions = ["no-oven", "one-pot"] as const;
 export const dietOptions = ["vegetarian", "no-pork", "no-beef"] as const;
 
+type Budget = (typeof budgetOptions)[number];
+type Time = (typeof timeOptions)[number];
+type Kitchen = (typeof kitchenOptions)[number];
+type Diet = (typeof dietOptions)[number];
+
 export type Filters = {
-  budget?: (typeof budgetOptions)[number];
-  time?: (typeof timeOptions)[number];
-  kitchen: (typeof kitchenOptions)[number][];
-  diet: (typeof dietOptions)[number][];
+  budget?: Budget;
+  time?: Time;
+  kitchen: Kitchen[];
+  diet: Diet[];
   supermarket: boolean;
 };
+
+// The chips a page actually shows. Values outside these are ignored when parsing,
+// so a URL can't turn on a filter the user has no visible chip for.
+export type FilterOptions = {
+  budget: readonly Budget[];
+  time: readonly Time[];
+  kitchen: readonly Kitchen[];
+  diet: readonly Diet[];
+  supermarket: boolean;
+};
+
+export const allFilterOptions: FilterOptions = {
+  budget: budgetOptions,
+  time: timeOptions,
+  kitchen: kitchenOptions,
+  diet: dietOptions,
+  supermarket: true,
+};
+
+export const emptyFilters: Filters = { kitchen: [], diet: [], supermarket: false };
+
+const FILTER_KEYS = ["budget", "time", "kitchen", "diet", "supermarket"] as const;
 
 const pick = <T extends string>(options: readonly T[], value: string | null) =>
   options.find((o) => o === value);
 
-const pickAll = <T extends string>(options: readonly T[], value: string | null) =>
-  (value?.split(",") ?? []).filter((v): v is T => options.includes(v as T));
+// Returned in option order and deduped, so the same selection always has one URL.
+const pickAll = <T extends string>(options: readonly T[], value: string | null) => {
+  const values = value?.split(",") ?? [];
+  return options.filter((o) => values.includes(o));
+};
 
 // Unknown values are ignored, so hand-edited or stale URLs never break the page.
-export function parseFilters(params: URLSearchParams): Filters {
+export function parseFilters(params: URLSearchParams, options: FilterOptions = allFilterOptions): Filters {
   return {
-    budget: pick(budgetOptions, params.get("budget")),
-    time: pick(timeOptions, params.get("time")),
-    kitchen: pickAll(kitchenOptions, params.get("kitchen")),
-    diet: pickAll(dietOptions, params.get("diet")),
-    supermarket: params.get("supermarket") === "1",
+    budget: pick(options.budget, params.get("budget")),
+    time: pick(options.time, params.get("time")),
+    kitchen: pickAll(options.kitchen, params.get("kitchen")),
+    diet: pickAll(options.diet, params.get("diet")),
+    supermarket: options.supermarket && params.get("supermarket") === "1",
   };
 }
 
-export function serializeFilters(filters: Filters): string {
-  const params = new URLSearchParams();
+// Replaces only the filter keys in `base`, so unrelated params (utm_*, etc.) survive.
+export function serializeFilters(filters: Filters, base?: URLSearchParams): string {
+  const params = new URLSearchParams(base);
+  for (const key of FILTER_KEYS) params.delete(key);
+  const inOrder = <T extends string>(options: readonly T[], values: T[]) =>
+    options.filter((o) => values.includes(o)).join(",");
   if (filters.budget) params.set("budget", filters.budget);
   if (filters.time) params.set("time", filters.time);
-  if (filters.kitchen.length) params.set("kitchen", filters.kitchen.join(","));
-  if (filters.diet.length) params.set("diet", filters.diet.join(","));
+  if (filters.kitchen.length) params.set("kitchen", inOrder(kitchenOptions, filters.kitchen));
+  if (filters.diet.length) params.set("diet", inOrder(dietOptions, filters.diet));
   if (filters.supermarket) params.set("supermarket", "1");
   // Keep list separators readable in shared links.
   return params.toString().replaceAll("%2C", ",");
@@ -69,4 +103,16 @@ export function matchesFilters(dish: DishFacets, f: Filters): boolean {
   if (!f.diet.every((d) => dish.diet.includes(d))) return false;
   if (f.supermarket && !dish.supermarketOnly) return false;
   return true;
+}
+
+// Options that match at least one dish on their own; a chip that always empties the list is noise.
+export function availableFilterOptions(dishes: DishFacets[], allowSupermarket: boolean): FilterOptions {
+  const matchesAny = (f: Partial<Filters>) => dishes.some((d) => matchesFilters(d, { ...emptyFilters, ...f }));
+  return {
+    budget: budgetOptions.filter((budget) => matchesAny({ budget })),
+    time: timeOptions.filter((time) => matchesAny({ time })),
+    kitchen: kitchenOptions.filter((k) => matchesAny({ kitchen: [k] })),
+    diet: dietOptions.filter((d) => matchesAny({ diet: [d] })),
+    supermarket: allowSupermarket && matchesAny({ supermarket: true }),
+  };
 }

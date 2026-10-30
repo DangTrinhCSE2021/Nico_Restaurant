@@ -1,3 +1,4 @@
+import { ingredientAnchor } from "@/domain/anchors";
 import type { DishFacets } from "@/domain/filters";
 import type { Dish } from "@/domain/schema";
 import type { PairData } from "./load";
@@ -22,7 +23,7 @@ export const dishHref = (lang: string, pair: string, slug: string) =>
   `/${lang}/${pair}/dish/${slug}`;
 
 export const guideHref = (lang: string, pair: string, ingredientSlug: string) =>
-  `/${lang}/${pair}/ingredients#${ingredientSlug}`;
+  `/${lang}/${pair}/ingredients#${ingredientAnchor(ingredientSlug)}`;
 
 // Ingredients used by home-region dishes, with the dishes that use them.
 export function homeIngredients(data: PairData) {
@@ -56,4 +57,35 @@ export function facetsFor(data: PairData, dish: Dish): DishFacets {
         substitutionsFor(data, ingredient, dish.slug).some((s) => soldInSupermarket(data, s.substitute)),
     ),
   };
+}
+
+export const storesHref = (lang: string, pair: string) => `/${lang}/${pair}/stores`;
+
+// What a store is good for, derived from ingredient availability.
+export function storeSummary(data: PairData, storeSlug: string) {
+  const stockedHere = (ingredientSlug: string, likelihood: "usually" | "sometimes") =>
+    findIngredient(data, ingredientSlug)?.availability.some(
+      (a) => a.store === storeSlug && a.likelihood === likelihood,
+    ) ?? false;
+
+  const usually = data.ingredients.filter((i) => stockedHere(i.slug, "usually"));
+  const sometimes = data.ingredients.filter((i) => stockedHere(i.slug, "sometimes"));
+  const onlyHere = data.ingredients.filter(
+    (i) => i.availability.length > 0 && i.availability.every((a) => a.store === storeSlug),
+  );
+
+  // Recipes where every required ingredient (or a swap for it) is usually stocked here.
+  const oneTripDishes = data.dishes.filter(
+    (dish) =>
+      dish.recipe &&
+      dish.recipe.ingredients
+        .filter((i) => !i.optional)
+        .every(
+          ({ ingredient }) =>
+            stockedHere(ingredient, "usually") ||
+            substitutionsFor(data, ingredient, dish.slug).some((s) => stockedHere(s.substitute, "usually")),
+        ),
+  );
+
+  return { usually, sometimes, onlyHere, oneTripDishes };
 }

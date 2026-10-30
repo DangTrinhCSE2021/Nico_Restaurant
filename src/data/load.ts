@@ -72,6 +72,9 @@ function checkReferences(data: PairData): string[] {
     for (const a of ing.availability) {
       if (!stores.has(a.store)) errors.push(`ingredient "${ing.slug}" uses unknown store "${a.store}"`);
     }
+    if (ing.image && !fs.existsSync(path.join(process.cwd(), "public", ing.image.file))) {
+      errors.push(`ingredient "${ing.slug}" image not found: public${ing.image.file}`);
+    }
   }
 
   for (const dish of data.dishes) {

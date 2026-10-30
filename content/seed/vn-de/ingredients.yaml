@@ -16,12 +16,14 @@
 - slug: fish-sauce
   name: { vi: Nước mắm, en: Fish sauce, de: Fischsauce }
   category: sauce
+  image: {"file": "/images/ingredients/fish-sauce.jpg", "credit": "Mx. Granger", "license": "CC0", "source": "https://commons.wikimedia.org/wiki/File:Lao_fish_sauce.jpg"}
   availability:
     - { store: asia-markt, likelihood: usually }
     - { store: rewe, likelihood: sometimes, productHint: Asia-Regal }
 - slug: star-anise
   name: { vi: Hoa hồi, en: Star anise, de: Sternanis }
   category: spice
+  image: {"file": "/images/ingredients/star-anise.jpg", "credit": "Bff", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Illicium_verum20170511_7548.jpg"}
   availability:
     - { store: asia-markt, likelihood: usually }
     - { store: rewe, likelihood: usually, productHint: Gewürzregal }
@@ -29,6 +31,7 @@
 - slug: paprika-powder
   name: { vi: Bột ớt paprika, en: Paprika powder, de: Paprikapulver }
   category: spice
+  image: {"file": "/images/ingredients/paprika-powder.jpg", "credit": "Wikimedia Commons contributor", "license": "CC BY-SA 1.0", "source": "https://commons.wikimedia.org/wiki/File:Paprika-spice.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -36,6 +39,7 @@
 - slug: onion
   name: { vi: Hành tây, en: Onion, de: Zwiebel }
   category: vegetable
+  image: {"file": "/images/ingredients/onion.jpg", "credit": "Colin", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Mixed_onions.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -43,11 +47,13 @@
 - slug: thai-basil
   name: { vi: Húng quế, en: Thai basil, de: Thai-Basilikum }
   category: herb
+  image: {"file": "/images/ingredients/thai-basil.jpg", "credit": "Wikimedia Commons contributor", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Thai_basil.jpg"}
   availability:
     - { store: asia-markt, likelihood: usually }
 - slug: basil
   name: { vi: Lá basil Âu, en: Basil, de: Basilikum }
   category: herb
+  image: {"file": "/images/ingredients/basil.jpg", "credit": "Paul Goyette", "license": "CC BY-SA 2.0", "source": "https://commons.wikimedia.org/wiki/File:Basil_leaves.jpg"}
   availability:
     - { store: lidl, likelihood: usually, productHint: Topf }
     - { store: rewe, likelihood: usually, productHint: Topf }
@@ -56,6 +62,7 @@
 - slug: pork-belly
   name: { vi: Thịt ba chỉ, en: Pork belly, de: Schweinebauch }
   category: protein
+  image: {"file": "/images/ingredients/pork-belly.jpg", "credit": "Shixart1985", "license": "CC BY 2.0", "source": "https://commons.wikimedia.org/wiki/File:Freshly_prepared_raw_pork_belly_with_red_onions_and_chili_peppers.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -73,6 +80,7 @@
   name: { vi: Thịt heo xay, en: Minced pork, de: Schweinehackfleisch }
   aliases: [Schweinehack, Mett]
   category: protein
+  image: {"file": "/images/ingredients/minced-pork.jpg", "credit": "Nize", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Mettbroetchen.jpg"}
   availability:
     - { store: rewe, likelihood: usually }
     - { store: edeka, likelihood: usually }
@@ -80,6 +88,7 @@
 - slug: mixed-mince
   name: { vi: Thịt xay trộn (bò + heo), en: Mixed mince (beef and pork), de: Hackfleisch gemischt }
   category: protein
+  image: {"file": "/images/ingredients/mixed-mince.jpg", "credit": "Wikimedia Commons contributor", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Hackfleisch-1.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -88,6 +97,7 @@
   name: { vi: Đùi gà, en: Chicken thighs, de: Hähnchenschenkel }
   aliases: [Hähnchenoberkeulen]
   category: protein
+  image: {"file": "/images/ingredients/chicken-thighs.jpg", "credit": "gran", "license": "CC BY 3.0", "source": "https://commons.wikimedia.org/wiki/File:Raw_chicken_thighs.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -95,6 +105,7 @@
 - slug: whole-chicken
   name: { vi: Gà nguyên con, en: Whole chicken, de: Hähnchen ganz }
   category: protein
+  image: {"file": "/images/ingredients/whole-chicken.jpg", "credit": "Nesnad", "license": "CC BY 4.0", "source": "https://commons.wikimedia.org/wiki/File:Whole_raw_chicken_-_Japan_Dec_22_2019.jpeg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -110,6 +121,7 @@
   name: { vi: Thịt heo xông khói muối, en: Cured smoked pork, de: Kasseler }
   aliases: [Kassler]
   category: protein
+  image: {"file": "/images/ingredients/kassler.jpg", "credit": "de:User:Rainer Zenz", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Kasseler.jpg"}
   availability:
     - { store: rewe, likelihood: usually }
     - { store: edeka, likelihood: usually }
@@ -117,6 +129,7 @@
 - slug: eggs
   name: { vi: Trứng gà, en: Eggs, de: Eier }
   category: protein
+  image: {"file": "/images/ingredients/eggs.jpg", "credit": "Krzysztof Golik", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Egg_cartons_with_chicken_eggs_03.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -126,6 +139,7 @@
 - slug: garlic
   name: { vi: Tỏi, en: Garlic, de: Knoblauch }
   category: vegetable
+  image: {"file": "/images/ingredients/garlic.jpg", "credit": "Ivar Leidus", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -133,6 +147,7 @@
 - slug: shallot
   name: { vi: Hành tím, en: Shallot, de: Schalotten }
   category: vegetable
+  image: {"file": "/images/ingredients/shallot.jpg", "credit": "Wikimedia Commons contributor", "license": "Public domain", "source": "https://commons.wikimedia.org/wiki/File:Shallots_-_sliced_and_whole.jpg"}
   availability:
     - { store: rewe, likelihood: usually }
     - { store: edeka, likelihood: usually }
@@ -140,6 +155,7 @@
 - slug: ginger
   name: { vi: Gừng, en: Ginger, de: Ingwer }
   category: vegetable
+  image: {"file": "/images/ingredients/ginger.jpg", "credit": "Khlshnuramalina", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Ginger_(Zingiber_officinale).jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -147,6 +163,7 @@
 - slug: spring-onion
   name: { vi: Hành lá, en: Spring onion, de: Frühlingszwiebeln }
   category: vegetable
+  image: {"file": "/images/ingredients/spring-onion.jpg", "credit": "Evan-Amos", "license": "Public domain", "source": "https://commons.wikimedia.org/wiki/File:CSA-Red-Spring-Onions.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: rewe, likelihood: usually }
@@ -155,6 +172,7 @@
   name: { vi: Cà rốt, en: Carrot, de: Karotten }
   aliases: [Möhren]
   category: vegetable
+  image: {"file": "/images/ingredients/carrot.jpg", "credit": "W.carter", "license": "CC0", "source": "https://commons.wikimedia.org/wiki/File:Preparing_and_slicing_carrots.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -162,6 +180,7 @@
 - slug: lettuce
   name: { vi: Xà lách, en: Lettuce, de: Kopfsalat }
   category: vegetable
+  image: {"file": "/images/ingredients/lettuce.jpg", "credit": "Rainer Zenz", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Romaine_lettuce.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -169,6 +188,7 @@
 - slug: frozen-peas-carrots
   name: { vi: Đậu Hà Lan và cà rốt đông lạnh, en: Frozen peas and carrots, de: Erbsen und Möhren (TK) }
   category: vegetable
+  image: {"file": "/images/ingredients/frozen-peas-carrots.jpg", "credit": "terri_bateman", "license": "CC0", "source": "https://commons.wikimedia.org/wiki/File:Peas_and_carrots_(19675818713).jpg"}
   availability:
     - { store: lidl, likelihood: usually, productHint: Tiefkühl }
     - { store: aldi, likelihood: usually, productHint: Tiefkühl }
@@ -176,6 +196,7 @@
 - slug: sauerkraut
   name: { vi: Bắp cải muối chua, en: Sauerkraut, de: Sauerkraut }
   category: vegetable
+  image: {"file": "/images/ingredients/sauerkraut.jpg", "credit": "Eugene Zelenko", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Belarusian-Russian_Sauerkraut-1.jpg"}
   availability:
     - { store: lidl, likelihood: usually, productHint: Glas oder Dose }
     - { store: aldi, likelihood: usually, productHint: Glas oder Dose }
@@ -194,6 +215,7 @@
 - slug: cilantro
   name: { vi: Ngò rí, en: Cilantro, de: Koriander }
   category: herb
+  image: {"file": "/images/ingredients/cilantro.jpg", "credit": "Rupeshm364", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Coriander_Leaves.jpg"}
   availability:
     - { store: asia-markt, likelihood: usually }
     - { store: rewe, likelihood: usually, productHint: Topf }
@@ -201,6 +223,7 @@
 - slug: lime
   name: { vi: Chanh, en: Lime, de: Limetten }
   category: other
+  image: {"file": "/images/ingredients/lime.jpg", "credit": "Ivar Leidus", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Lime_-_whole_and_halved.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -208,6 +231,7 @@
 - slug: chili
   name: { vi: Ớt tươi, en: Fresh chili, de: Chilischoten }
   category: spice
+  image: {"file": "/images/ingredients/chili.jpg", "credit": "Jiafei Slay Queen", "license": "CC0", "source": "https://commons.wikimedia.org/wiki/File:Bird%27s_eye_chili.jpg"}
   availability:
     - { store: asia-markt, likelihood: usually }
     - { store: rewe, likelihood: usually }
@@ -218,12 +242,14 @@
   name: { vi: Bún khô, en: Rice vermicelli, de: Reis-Vermicelli }
   aliases: [Reisnudeln dünn]
   category: noodle-rice
+  image: {"file": "/images/ingredients/rice-vermicelli.jpg", "credit": "Popo le Chien", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Rice_vermicelli.jpg"}
   availability:
     - { store: asia-markt, likelihood: usually }
     - { store: rewe, likelihood: sometimes, productHint: Asia-Regal }
 - slug: jasmine-rice
   name: { vi: Gạo thơm (gạo jasmine), en: Jasmine rice, de: Jasminreis }
   category: noodle-rice
+  image: {"file": "/images/ingredients/jasmine-rice.jpg", "credit": "Wikimedia Commons contributor", "license": "CC BY-SA 2.5", "source": "https://commons.wikimedia.org/wiki/File:JasmineRice.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -238,6 +264,7 @@
 - slug: maultaschen
   name: { vi: Bánh Maultaschen (giống hoành thánh lớn), en: Maultaschen (Swabian dumplings), de: Maultaschen }
   category: other
+  image: {"file": "/images/ingredients/maultaschen.jpg", "credit": "Wikimedia Commons contributor", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Maultaschensuppe.jpg"}
   availability:
     - { store: rewe, likelihood: usually, productHint: Kühlregal }
     - { store: edeka, likelihood: usually, productHint: Kühlregal }
@@ -247,6 +274,7 @@
   name: { vi: Nước dùng / viên súp, en: Stock, de: Brühe }
   aliases: [Gemüsebrühe, Rinderbrühe, Brühwürfel]
   category: other
+  image: {"file": "/images/ingredients/broth.jpg", "credit": "Rainer Z ...", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Br%C3%BChw%C3%BCrfel-1.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -254,6 +282,7 @@
 - slug: soy-sauce
   name: { vi: Nước tương, en: Soy sauce, de: Sojasauce }
   category: sauce
+  image: {"file": "/images/ingredients/soy-sauce.jpg", "credit": "국립국어원", "license": "CC BY-SA 2.0 kr", "source": "https://commons.wikimedia.org/wiki/File:Soy_sauce_2.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -261,6 +290,7 @@
 - slug: coconut-water
   name: { vi: Nước dừa, en: Coconut water, de: Kokoswasser }
   category: other
+  image: {"file": "/images/ingredients/coconut-water.jpg", "credit": "Crisco 1492", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Coconut_Drink,_Pangandaran.JPG"}
   availability:
     - { store: rewe, likelihood: usually, productHint: Getränke }
     - { store: asia-markt, likelihood: usually }
@@ -275,6 +305,7 @@
 - slug: sugar
   name: { vi: Đường, en: Sugar, de: Zucker }
   category: other
+  image: {"file": "/images/ingredients/sugar.jpg", "credit": "Lauri Andler (Phantom)", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Sugar_2xmacro.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -282,6 +313,15 @@
 - slug: black-pepper
   name: { vi: Tiêu, en: Black pepper, de: Schwarzer Pfeffer }
   category: spice
+  image: {"file": "/images/ingredients/black-pepper.jpg", "credit": "Ryan Snyder", "license": "CC BY 2.0", "source": "https://commons.wikimedia.org/wiki/File:Black_Peppercorns_(4422070187).jpg"}
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: salt
+  name: { vi: Muối, en: Salt, de: Salz }
+  category: other
+  image: {"file": "/images/ingredients/salt.jpg", "credit": "Dubravko Sorić SoraZG on Flickr", "license": "CC BY 2.0", "source": "https://commons.wikimedia.org/wiki/File:Salt_shaker_on_white_background.jpg"}
   availability:
     - { store: lidl, likelihood: usually }
     - { store: aldi, likelihood: usually }
@@ -289,6 +329,7 @@
 - slug: caraway
   name: { vi: Hạt caraway (thì là Ba Tư), en: Caraway seeds, de: Kümmel }
   category: spice
+  image: {"file": "/images/ingredients/caraway.jpg", "credit": "OttawaAC", "license": "CC BY-SA 3.0", "source": "https://commons.wikimedia.org/wiki/File:Caraway_Seed.jpg"}
   availability:
     - { store: rewe, likelihood: usually, productHint: Gewürzregal }
     - { store: edeka, likelihood: usually, productHint: Gewürzregal }

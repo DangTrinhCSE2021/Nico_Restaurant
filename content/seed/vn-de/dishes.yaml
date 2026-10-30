@@ -12,7 +12,8 @@
   keyIngredients: [beef-shank, rice-noodles, star-anise, fish-sauce]
   timeMin: 180
   costPerServingEur: 3.5
-  equipment: [stove, one-pot]
+  # Not one-pot: a dry pan for charring and a second pot for the noodles.
+  equipment: [stove]
   recipe:
     servings: 4
     ingredients:
@@ -78,9 +79,11 @@
   methods: [braise]
   flavor: { sweet: 2, sour: 0, salty: 3, umami: 3, spicy: 0, herbal: 0 }
   keyIngredients: [pork-belly, eggs, coconut-water, fish-sauce]
-  timeMin: 105
+  # 30 min marinating (eggs boil meanwhile) + caramel + 60 + 30 min braising, plus prep.
+  timeMin: 130
   costPerServingEur: 2.5
-  equipment: [stove, one-pot]
+  # Not one-pot: the eggs are boiled separately.
+  equipment: [stove]
   recipe:
     servings: 4
     ingredients:
@@ -131,6 +134,7 @@
       - { ingredient: garlic, amount: 4 cloves }
       - { ingredient: lime, amount: "1" }
       - { ingredient: carrot, amount: "1" }
+      - { ingredient: black-pepper, amount: 1 tsp }
       - { ingredient: chili, amount: "1", optional: true }
       - { ingredient: lettuce, amount: 1 head }
       - { ingredient: cilantro, amount: 1 bunch, optional: true }
@@ -152,8 +156,8 @@
   region: VN
   name: { vi: Gà kho gừng, en: Ginger braised chicken }
   description:
-    vi: Đùi gà kho gừng mặn ngọt, cay ấm. Nguyên liệu có hết ở Lidl hoặc Aldi, trừ nước mắm.
-    en: Chicken thighs braised with ginger, salty-sweet and warming. Everything except the fish sauce is at Lidl or Aldi.
+    vi: Đùi gà kho gừng mặn ngọt, cay ấm. Gà, gừng, tỏi, đường và tiêu có ở Lidl hoặc Aldi. Hành tím chỉ thỉnh thoảng có ở Lidl (dùng hành tây thay được), nước mắm thường phải mua ở chợ châu Á.
+    en: Chicken thighs braised with ginger, salty-sweet and warming. Chicken, ginger, garlic, sugar and pepper are at Lidl or Aldi. Shallots are only sometimes at Lidl (an onion works instead), and the fish sauce usually means a trip to an Asia-Markt.
   dishType: braise
   methods: [braise]
   flavor: { sweet: 2, sour: 0, salty: 3, umami: 2, spicy: 1, herbal: 1 }
@@ -235,7 +239,8 @@
   keyIngredients: [soup-chicken, rice-noodles, ginger, star-anise]
   timeMin: 150
   costPerServingEur: 2.5
-  equipment: [stove, one-pot]
+  # Not one-pot: a dry pan for charring and a second pot for the noodles.
+  equipment: [stove]
   diet: [no-pork, no-beef]
   recipe:
     servings: 4
@@ -246,6 +251,8 @@
       - { ingredient: ginger, amount: 30 g }
       - { ingredient: star-anise, amount: "3" }
       - { ingredient: fish-sauce, amount: 45 ml }
+      - { ingredient: salt, amount: 1 tsp }
+      - { ingredient: sugar, amount: 1 tsp }
       - { ingredient: spring-onion, amount: "3" }
       - { ingredient: cilantro, amount: 1 bunch, optional: true }
       - { ingredient: lime, amount: "1" }

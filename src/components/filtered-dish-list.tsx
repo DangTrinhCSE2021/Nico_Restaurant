@@ -1,16 +1,14 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { Children, type ReactNode } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
   activeFilterCount,
-  budgetOptions,
-  dietOptions,
-  kitchenOptions,
+  availableFilterOptions,
+  emptyFilters,
   matchesFilters,
   parseFilters,
   serializeFilters,
-  timeOptions,
   type DishFacets,
   type Filters,
 } from "@/domain/filters";
@@ -26,13 +24,15 @@ type Props = {
 
 export function FilteredDishList({ items, labels, showSupermarketFilter }: Props) {
   const pathname = usePathname();
-  const filters = parseFilters(new URLSearchParams(useSearchParams().toString()));
+  const searchParams = new URLSearchParams(useSearchParams().toString());
+  const options = availableFilterOptions(items.map((item) => item.facets), showSupermarketFilter);
+  const filters = parseFilters(searchParams, options);
   const visible = items.filter((item) => matchesFilters(item.facets, filters));
   const active = activeFilterCount(filters);
 
   // Next.js syncs useSearchParams with the native History API, so no server round trip.
   const update = (next: Filters) => {
-    const query = serializeFilters(next);
+    const query = serializeFilters(next, searchParams);
     window.history.replaceState(null, "", query ? `${pathname}?${query}` : pathname);
   };
 
@@ -49,34 +49,34 @@ export function FilteredDishList({ items, labels, showSupermarketFilter }: Props
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-4">
         <ChipGroup label={labels.budget}>
-          {budgetOptions.map((o) => (
+          {options.budget.map((o) => (
             <Chip key={o} pressed={filters.budget === o} onClick={() => toggleOne("budget", o)}>
               {labels.budgetOptions[o]}
             </Chip>
           ))}
         </ChipGroup>
         <ChipGroup label={labels.time}>
-          {timeOptions.map((o) => (
+          {options.time.map((o) => (
             <Chip key={o} pressed={filters.time === o} onClick={() => toggleOne("time", o)}>
               {labels.timeOptions[o]}
             </Chip>
           ))}
         </ChipGroup>
         <ChipGroup label={labels.kitchen}>
-          {kitchenOptions.map((o) => (
+          {options.kitchen.map((o) => (
             <Chip key={o} pressed={filters.kitchen.includes(o)} onClick={() => toggleMany("kitchen", o)}>
               {labels.kitchenOptions[o]}
             </Chip>
           ))}
         </ChipGroup>
         <ChipGroup label={labels.diet}>
-          {dietOptions.map((o) => (
+          {options.diet.map((o) => (
             <Chip key={o} pressed={filters.diet.includes(o)} onClick={() => toggleMany("diet", o)}>
               {labels.dietOptions[o]}
             </Chip>
           ))}
         </ChipGroup>
-        {showSupermarketFilter && (
+        {options.supermarket && (
           <ChipGroup label={labels.shopping}>
             <Chip pressed={filters.supermarket} onClick={() => update({ ...filters, supermarket: !filters.supermarket })}>
               {labels.supermarketOnly}
@@ -90,7 +90,7 @@ export function FilteredDishList({ items, labels, showSupermarketFilter }: Props
         {active > 0 && (
           <button
             type="button"
-            onClick={() => update({ kitchen: [], diet: [], supermarket: false })}
+            onClick={() => update(emptyFilters)}
             className="min-h-11 px-2 underline underline-offset-4"
           >
             {labels.clear} ({active})
@@ -118,6 +118,8 @@ export function DishList({ items }: { items: ListItem[] }) {
 }
 
 function ChipGroup({ label, children }: { label: string; children: ReactNode }) {
+  // A group whose options were all hidden (see availableFilterOptions) shouldn't leave an empty label.
+  if (Children.count(children) === 0) return null;
   return (
     <div role="group" aria-label={label} className="flex items-center gap-3">
       <span className="w-20 shrink-0 text-xs font-medium text-muted">{label}</span>

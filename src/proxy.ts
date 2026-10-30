@@ -1,20 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { locales, matchLocale } from "@/i18n/config";
+import { localeRedirectPath } from "@/i18n/config";
 
 // Redirects locale-less paths (e.g. "/") to "/vi" or "/en".
 export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const hasLocalePrefix = locales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
-  );
-  if (hasLocalePrefix) return;
-
-  const locale = matchLocale(request.headers.get("accept-language"));
-  request.nextUrl.pathname = `/${locale}${pathname}`;
+  const target = localeRedirectPath(request.nextUrl.pathname, request.headers.get("accept-language"));
+  if (target === null) return;
+  request.nextUrl.pathname = target;
   return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
-  // Skip Next internals, API routes and files with an extension.
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  // Skip Next internals, API routes (/api and /api/..., not /apis) and files with an extension.
+  matcher: ["/((?!_next|api$|api/|.*\\..*).*)"],
 };

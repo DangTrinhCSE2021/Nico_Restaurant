@@ -52,11 +52,20 @@ export const storeSchema = z.strictObject({
   notes: localizedText,
 });
 
+// A photo under public/. Credit and license are required so every image can be attributed.
+export const imageSchema = z.strictObject({
+  file: z.string().regex(/^\/images\/[a-z0-9/_-]+\.(jpg|jpeg|png|webp)$/, "file must be a path under /images/"),
+  credit: z.string().min(1),
+  license: z.string().min(1),
+  source: z.string().url().optional(),
+});
+
 export const ingredientSchema = z.strictObject({
   slug,
   name: localizedText.required({ de: true }),
   aliases: z.array(z.string()).default([]),
   category: z.enum(["protein", "vegetable", "herb", "sauce", "spice", "noodle-rice", "other"]),
+  image: imageSchema.optional(),
   availability: z.array(
     z.strictObject({
       store: slug,
@@ -124,6 +133,7 @@ export const regionPairSchema = z.strictObject({
 export type LocalizedText = z.infer<typeof localizedText>;
 export type FlavorProfile = z.infer<typeof flavorProfile>;
 export type Store = z.infer<typeof storeSchema>;
+export type Image = z.infer<typeof imageSchema>;
 export type Ingredient = z.infer<typeof ingredientSchema>;
 export type Dish = z.infer<typeof dishSchema>;
 export type DishLink = z.infer<typeof dishLinkSchema>;

@@ -12,7 +12,8 @@ const SUBSTRING_MIN_LENGTH = 5;
 // accents exactly ("sả" ≠ "sauce"); short terms match word starts ("hanh" ≠ "chanh").
 export function matchesQuery(query: string, text: string): boolean {
   const accentSensitive = hasAccents(query);
-  const prep = (s: string) => (accentSensitive ? s.toLowerCase() : normalize(s));
+  // NFC so a decomposed "sả" (some keyboards/OSes) still equals the precomposed one in the data.
+  const prep = (s: string) => (accentSensitive ? s.normalize("NFC").toLowerCase() : normalize(s));
   const textWords = words(prep(text));
   return words(prep(query)).every((term) =>
     textWords.some((word) =>

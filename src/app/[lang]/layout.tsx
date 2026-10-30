@@ -41,6 +41,11 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           </Link>
         </header>
         <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-12">{children}</main>
+        <footer className="mx-auto w-full max-w-3xl border-t border-border px-4 py-6 text-xs text-muted">
+          <Link href={`/${lang}/credits`} className="underline underline-offset-2">
+            {dict.credits.footerLink}
+          </Link>
+        </footer>
       </body>
     </html>
   );

@@ -39,3 +39,16 @@ scripts/validate-seed.ts `npm run validate`
 3. Run `npm run validate` before committing.
 
 Text fields take `vi` (required), `en` (falls back to `vi`) and `de` (the name used in German shops).
+
+## Ingredient photos
+
+Photos live in `public/images/ingredients/<slug>.jpg` and are referenced from `ingredients.yaml`:
+
+```yaml
+image: { file: /images/ingredients/garlic.jpg, credit: Your Name, license: CC BY 4.0 }
+```
+
+`credit` and `license` are required and are listed on the `/credits` page. `source` (a URL) is optional.
+Ingredients without `image` show a placeholder. The current photos come from Wikimedia Commons.
+To replace one with your own (ideally the product on a German shelf), overwrite the file and update `credit`/`license`.
+A square-ish photo of at least 400 px works best. `npm run validate` fails if a referenced file is missing.

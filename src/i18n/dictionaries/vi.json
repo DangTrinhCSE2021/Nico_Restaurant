@@ -16,6 +16,10 @@
     "guide": {
       "title": "Nguyên liệu và cách thay thế",
       "description": "Nguyên liệu món Việt, tên tiếng Đức để tìm trong siêu thị, nơi mua và món thay thế khi không có."
+    },
+    "stores": {
+      "title": "Đi chợ ở Đức",
+      "description": "Mỗi siêu thị mạnh về gì, nguyên liệu Việt nào có ở đâu, và món nào mua đủ đồ trong một lần."
     }
   },
   "dish": {
@@ -110,5 +114,33 @@
       "vegetable": "Rau củ",
       "other": "Khác"
     }
+  },
+  "stores": {
+    "title": "Đi chợ ở Đức",
+    "description": "Mỗi siêu thị mạnh về gì, nguyên liệu Việt nào có ở đâu, và món nào mua đủ đồ trong một lần.",
+    "kinds": {
+      "supermarket": "Siêu thị",
+      "discounter": "Siêu thị giá rẻ",
+      "asia-market": "Chợ châu Á",
+      "online": "Mua online"
+    },
+    "priceLevels": [
+      "Giá rẻ",
+      "Giá trung bình",
+      "Giá cao"
+    ],
+    "onlyHere": "Chỉ mua được ở đây",
+    "oneTrip": "Mua đủ đồ trong một lần",
+    "oneTripHint": "Mọi nguyên liệu chính (hoặc món thay thế) đều thường có ở đây.",
+    "usually": "Thường có {count} nguyên liệu",
+    "sometimes": "Đôi khi có",
+    "findAsiaMarkt": "Tìm Asia-Markt gần bạn",
+    "disclaimer": "Thông tin cửa hàng là ước tính và có thể khác nhau tùy chi nhánh. Thấy sai? Hãy báo cho chúng mình."
+  },
+  "credits": {
+    "title": "Nguồn ảnh",
+    "intro": "Ảnh nguyên liệu lấy từ Wikimedia Commons theo giấy phép tự do. Cảm ơn các tác giả.",
+    "source": "Ảnh gốc",
+    "footerLink": "Nguồn ảnh và giấy phép"
   }
 }

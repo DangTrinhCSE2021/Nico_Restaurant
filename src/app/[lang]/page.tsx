@@ -15,6 +15,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
     { href: `/${lang}/${DEFAULT_PAIR}/familiar`, ...dict.modes.familiar },
     { href: `/${lang}/${DEFAULT_PAIR}/home-cooking`, ...dict.modes.homeCooking },
   ];
+  const guides = [
+    { href: `/${lang}/${DEFAULT_PAIR}/ingredients`, ...dict.modes.guide },
+    { href: `/${lang}/${DEFAULT_PAIR}/stores`, ...dict.modes.stores },
+  ];
 
   return (
     <div className="flex flex-col gap-8 pt-6">
@@ -34,13 +38,18 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </Link>
         ))}
       </section>
-      <Link
-        href={`/${lang}/${DEFAULT_PAIR}/ingredients`}
-        className="rounded-2xl border border-dashed border-border p-5 transition hover:border-primary"
-      >
-        <h2 className="text-lg font-bold">{dict.modes.guide.title}</h2>
-        <p className="mt-1 text-sm text-muted">{dict.modes.guide.description}</p>
-      </Link>
+      <section className="grid gap-4 sm:grid-cols-2">
+        {guides.map((guide) => (
+          <Link
+            key={guide.href}
+            href={guide.href}
+            className="rounded-2xl border border-dashed border-border p-5 transition hover:border-primary"
+          >
+            <h2 className="text-lg font-bold">{guide.title}</h2>
+            <p className="mt-1 text-sm text-muted">{guide.description}</p>
+          </Link>
+        ))}
+      </section>
     </div>
   );
 }

@@ -23,7 +23,8 @@ export default async function FamiliarPage({ params }: PageProps<"/[lang]/[pair]
     const local = dishes.get(link.localDish)!;
     const home = dishes.get(link.homeDish)!;
     return {
-      key: `${link.homeDish}-${link.localDish}`,
+      // "/" can't appear in a slug, so ("a-b", "c") and ("a", "b-c") get different keys.
+      key: `${link.homeDish}/${link.localDish}`,
       facets: facetsFor(data, local),
       card: (
         <DishCard
