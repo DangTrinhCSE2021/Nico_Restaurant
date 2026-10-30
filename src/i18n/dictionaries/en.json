@@ -56,5 +56,35 @@
     "sometimes": "sometimes",
     "seasonal": "seasonal",
     "rare": "rare"
+  },
+  "filters": {
+    "budget": "Cost",
+    "time": "Time",
+    "kitchen": "Kitchen",
+    "diet": "Diet",
+    "shopping": "Shopping",
+    "budgetOptions": {
+      "lt2": "Under €2",
+      "2to4": "€2–4",
+      "gt4": "Over €4"
+    },
+    "timeOptions": {
+      "15": "≤ 15 min",
+      "30": "≤ 30 min",
+      "60": "≤ 1 hour"
+    },
+    "kitchenOptions": {
+      "no-oven": "No oven",
+      "one-pot": "One pot"
+    },
+    "dietOptions": {
+      "vegetarian": "Vegetarian",
+      "no-pork": "No pork",
+      "no-beef": "No beef"
+    },
+    "supermarketOnly": "Supermarket only (no Asia-Markt)",
+    "count": "{count} dishes",
+    "clear": "Clear filters",
+    "empty": "No dishes match. Try removing a filter."
   }
 }

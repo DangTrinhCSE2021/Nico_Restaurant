@@ -56,5 +56,35 @@
     "sometimes": "đôi khi",
     "seasonal": "theo mùa",
     "rare": "hiếm"
+  },
+  "filters": {
+    "budget": "Giá / phần",
+    "time": "Thời gian",
+    "kitchen": "Bếp",
+    "diet": "Ăn kiêng",
+    "shopping": "Mua sắm",
+    "budgetOptions": {
+      "lt2": "Dưới €2",
+      "2to4": "€2–4",
+      "gt4": "Trên €4"
+    },
+    "timeOptions": {
+      "15": "≤ 15 phút",
+      "30": "≤ 30 phút",
+      "60": "≤ 1 giờ"
+    },
+    "kitchenOptions": {
+      "no-oven": "Không cần lò",
+      "one-pot": "Một nồi"
+    },
+    "dietOptions": {
+      "vegetarian": "Chay",
+      "no-pork": "Không thịt heo",
+      "no-beef": "Không thịt bò"
+    },
+    "supermarketOnly": "Chỉ siêu thị (không cần Asia-Markt)",
+    "count": "{count} món",
+    "clear": "Bỏ lọc",
+    "empty": "Không có món nào phù hợp. Thử bỏ bớt bộ lọc."
   }
 }
