@@ -21,6 +21,21 @@ export const substitutionsFor = (data: PairData, ingredientSlug: string, dishSlu
 export const dishHref = (lang: string, pair: string, slug: string) =>
   `/${lang}/${pair}/dish/${slug}`;
 
+export const guideHref = (lang: string, pair: string, ingredientSlug: string) =>
+  `/${lang}/${pair}/ingredients#${ingredientSlug}`;
+
+// Ingredients used by home-region dishes, with the dishes that use them.
+export function homeIngredients(data: PairData) {
+  const usedIn = new Map<string, Dish[]>();
+  for (const dish of data.dishes.filter((d) => d.region === data.pair.home)) {
+    const slugs = new Set([...dish.keyIngredients, ...(dish.recipe?.ingredients.map((i) => i.ingredient) ?? [])]);
+    for (const slug of slugs) usedIn.set(slug, [...(usedIn.get(slug) ?? []), dish]);
+  }
+  return data.ingredients
+    .filter((i) => usedIn.has(i.slug))
+    .map((ingredient) => ({ ingredient, usedIn: usedIn.get(ingredient.slug)! }));
+}
+
 // "Usually" only: a dish shouldn't pass the supermarket filter on a lucky find.
 const soldInSupermarket = (data: PairData, ingredientSlug: string) =>
   findIngredient(data, ingredientSlug)?.availability.some((a) => {

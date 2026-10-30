@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { listPairs, loadPair } from "@/data/load";
-import { dishHref, findDish, findIngredient, linksFor, substitutionsFor } from "@/data/queries";
+import { dishHref, findDish, findIngredient, guideHref, linksFor, substitutionsFor } from "@/data/queries";
 import { t } from "@/domain/localize";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -102,6 +102,7 @@ export default async function DishPage({ params }: PageProps<"/[lang]/[pair]/dis
                     amount={item.amount}
                     optional={item.optional}
                     stores={data.stores}
+                    guideHref={guideHref(lang, pair, item.ingredient)}
                     swaps={swaps}
                     lang={lang}
                     dict={dict}

@@ -34,6 +34,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </Link>
         ))}
       </section>
+      <Link
+        href={`/${lang}/${DEFAULT_PAIR}/ingredients`}
+        className="rounded-2xl border border-dashed border-border p-5 transition hover:border-primary"
+      >
+        <h2 className="text-lg font-bold">{dict.modes.guide.title}</h2>
+        <p className="mt-1 text-sm text-muted">{dict.modes.guide.description}</p>
+      </Link>
     </div>
   );
 }

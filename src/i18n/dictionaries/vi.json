@@ -12,6 +12,10 @@
     "homeCooking": {
       "title": "Nấu món Việt ở Đức",
       "description": "Món Việt với nguyên liệu mua ở Rewe, Lidl, Aldi, Asia-Markt và cách thay thế."
+    },
+    "guide": {
+      "title": "Nguyên liệu và cách thay thế",
+      "description": "Nguyên liệu món Việt, tên tiếng Đức để tìm trong siêu thị, nơi mua và món thay thế khi không có."
     }
   },
   "dish": {
@@ -86,5 +90,25 @@
     "count": "{count} món",
     "clear": "Bỏ lọc",
     "empty": "Không có món nào phù hợp. Thử bỏ bớt bộ lọc."
+  },
+  "guide": {
+    "title": "Nguyên liệu và cách thay thế",
+    "description": "Nguyên liệu món Việt, tên tiếng Đức để tìm trong siêu thị, nơi mua và món thay thế khi không có.",
+    "searchLabel": "Tìm nguyên liệu",
+    "searchPlaceholder": "Ví dụ: nước mắm, Fischsauce, sả…",
+    "count": "{count} nguyên liệu",
+    "noResults": "Không tìm thấy nguyên liệu nào. Thử tên tiếng Đức hoặc tiếng Anh.",
+    "usedIn": "Dùng trong",
+    "onlyFor": "chỉ cho món",
+    "asiaOnly": "Chỉ có ở Asia-Markt",
+    "categories": {
+      "sauce": "Nước chấm và gia vị lỏng",
+      "herb": "Rau thơm",
+      "spice": "Gia vị",
+      "noodle-rice": "Bún, phở và gạo",
+      "protein": "Thịt và trứng",
+      "vegetable": "Rau củ",
+      "other": "Khác"
+    }
   }
 }

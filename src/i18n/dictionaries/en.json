@@ -12,6 +12,10 @@
     "homeCooking": {
       "title": "Vietnamese food in Germany",
       "description": "Vietnamese dishes with ingredients from Rewe, Lidl, Aldi or an Asia-Markt, plus substitutes."
+    },
+    "guide": {
+      "title": "Ingredients and substitutes",
+      "description": "Vietnamese ingredients, their German shop names, where to buy them and what to use when you can't find them."
     }
   },
   "dish": {
@@ -86,5 +90,25 @@
     "count": "{count} dishes",
     "clear": "Clear filters",
     "empty": "No dishes match. Try removing a filter."
+  },
+  "guide": {
+    "title": "Ingredients and substitutes",
+    "description": "Vietnamese ingredients, their German shop names, where to buy them and what to use when you can't find them.",
+    "searchLabel": "Search ingredients",
+    "searchPlaceholder": "e.g. fish sauce, Fischsauce, nước mắm…",
+    "count": "{count} ingredients",
+    "noResults": "No ingredients found. Try the German or Vietnamese name.",
+    "usedIn": "Used in",
+    "onlyFor": "only for",
+    "asiaOnly": "Asia-Markt only",
+    "categories": {
+      "sauce": "Sauces",
+      "herb": "Herbs",
+      "spice": "Spices",
+      "noodle-rice": "Noodles and rice",
+      "protein": "Meat and eggs",
+      "vegetable": "Vegetables",
+      "other": "Other"
+    }
   }
 }
