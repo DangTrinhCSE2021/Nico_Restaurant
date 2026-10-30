@@ -1,11 +1,10 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { listPairs, loadPair } from "@/data/load";
-import { dishHref, facetsFor } from "@/data/queries";
+import { getPair, listPairs } from "@/data/pair";
+import { routes } from "@/domain/routes";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { DishCard } from "@/components/dish-card";
-import { DishList, FilteredDishList, type ListItem } from "@/components/filtered-dish-list";
+import { FilteredDishList, type ListItem } from "@/components/filtered-dish-list";
 
 export function generateStaticParams() {
   return listPairs().map((pair) => ({ pair }));
@@ -13,19 +12,19 @@ export function generateStaticParams() {
 
 export default async function HomeCookingPage({ params }: PageProps<"/[lang]/[pair]/home-cooking">) {
   const { lang, pair } = await params;
-  if (!hasLocale(lang) || !listPairs().includes(pair)) notFound();
+  const data = getPair(pair);
+  if (!hasLocale(lang) || !data) notFound();
   const dict = await getDictionary(lang);
-  const data = loadPair(pair);
 
   const items: ListItem[] = data.dishes
     .filter((d) => d.region === data.pair.home && d.recipe)
     .map((dish) => ({
       key: dish.slug,
-      facets: facetsFor(data, dish),
+      facets: data.facetsFor(dish),
       card: (
         <DishCard
           dish={dish}
-          href={dishHref(lang, pair, dish.slug)}
+          href={routes.dish(lang, pair, dish.slug)}
           lang={lang}
           dict={dict}
           draft={dish.reviewStatus === "draft"}
@@ -39,10 +38,7 @@ export default async function HomeCookingPage({ params }: PageProps<"/[lang]/[pa
         <h1 className="text-2xl font-bold">{dict.modes.homeCooking.title}</h1>
         <p className="mt-1 text-muted">{dict.modes.homeCooking.description}</p>
       </header>
-      {/* Filters read the URL, so they render in the browser; the full list is the static fallback. */}
-      <Suspense fallback={<DishList items={items} />}>
-        <FilteredDishList items={items} labels={dict.filters} showSupermarketFilter />
-      </Suspense>
+      <FilteredDishList items={items} labels={dict.filters} showSupermarketFilter />
     </div>
   );
 }

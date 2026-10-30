@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { storeAnchor } from "@/domain/anchors";
 import { t } from "@/domain/localize";
+import { routes } from "@/domain/routes";
 import type { Ingredient, Store, Substitution } from "@/domain/schema";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -13,10 +13,15 @@ export type Swap = {
   dishName?: string;
 };
 
-type StoreBadgesProps = { ingredient: Ingredient; stores: Store[]; storesHref: string; dict: Dictionary };
+type StoreBadgesProps = {
+  ingredient: Ingredient;
+  stores: ReadonlyMap<string, Store>;
+  pair: string;
+  lang: Locale;
+  dict: Dictionary;
+};
 
-export function StoreBadges({ ingredient, stores, storesHref, dict }: StoreBadgesProps) {
-  const storeName = (slug: string) => stores.find((s) => s.slug === slug)?.name ?? slug;
+export function StoreBadges({ ingredient, stores, pair, lang, dict }: StoreBadgesProps) {
 
   return (
     <ul className="flex flex-wrap gap-1.5" aria-label={dict.dish.whereToBuy}>
@@ -29,8 +34,8 @@ export function StoreBadges({ ingredient, stores, storesHref, dict }: StoreBadge
             a.likelihood === "usually" ? "border-primary text-primary" : "border-border text-muted"
           }`}
         >
-          <Link href={`${storesHref}#${storeAnchor(a.store)}`} className="hover:underline">
-            {storeName(a.store)}
+          <Link href={routes.stores(lang, pair, a.store)} className="hover:underline">
+            {stores.get(a.store)?.name ?? a.store}
           </Link>{" "}
           · {dict.likelihood[a.likelihood]}
           {a.productHint && <span lang="de"> · {a.productHint}</span>}
@@ -45,7 +50,7 @@ export function SwapList({ swaps, lang, dict }: { swaps: Swap[]; lang: Locale; d
     <ul className="flex flex-col gap-2 rounded-xl bg-background p-3">
       {swaps.map(({ substitution, substitute, dishName }) => (
         <li key={`${substitute.slug}-${substitution.dish ?? "any"}`} className="flex gap-3">
-          <IngredientImage ingredient={substitute} alt={t(substitute.name, lang)} size={40} />
+          <IngredientImage ingredient={substitute} size={40} />
           <div className="min-w-0">
             <p className="font-medium">
               {t(substitute.name, lang)}{" "}

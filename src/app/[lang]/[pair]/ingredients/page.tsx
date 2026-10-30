@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { listPairs, loadPair } from "@/data/load";
-import { dishHref, findDish, findIngredient, homeIngredients, storesHref } from "@/data/queries";
+import { getPair, listPairs } from "@/data/pair";
 import { ingredientAnchor } from "@/domain/anchors";
 import { t } from "@/domain/localize";
+import { routes } from "@/domain/routes";
 import type { Ingredient } from "@/domain/schema";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -28,32 +28,22 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/[pair]/ing
 
 export default async function IngredientsPage({ params }: PageProps<"/[lang]/[pair]/ingredients">) {
   const { lang, pair } = await params;
-  if (!hasLocale(lang) || !listPairs().includes(pair)) notFound();
+  const data = getPair(pair);
+  if (!hasLocale(lang) || !data) notFound();
   const dict = await getDictionary(lang);
-  const data = loadPair(pair);
-  const entries = homeIngredients(data);
 
-  const asiaMarketOnly = (ingredient: Ingredient) =>
-    ingredient.availability.length > 0 &&
-    ingredient.availability.every((a) => data.stores.find((s) => s.slug === a.store)?.kind === "asia-market");
-
+  // All swaps, labelled with the dish when they only apply to one.
   const swapsFor = (slug: string): Swap[] =>
-    data.substitutions
-      .filter((s) => s.original === slug)
-      .sort((a, b) => b.fidelity - a.fidelity)
-      .map((substitution) => {
-        const dish = substitution.dish ? findDish(data, substitution.dish) : undefined;
-        return {
-          substitution,
-          substitute: findIngredient(data, substitution.substitute)!,
-          dishName: dish && t(dish.name, lang),
-        };
-      });
+    data.swapsFor(slug).map(({ substitution, substitute, dish }) => ({
+      substitution,
+      substitute,
+      dishName: dish && t(dish.name, lang),
+    }));
 
   const groups: SearchGroup[] = CATEGORY_ORDER.map((category) => ({
     key: category,
     label: dict.guide.categories[category],
-    items: entries
+    items: data.guideEntries
       .filter(({ ingredient }) => ingredient.category === category)
       // Ingredients with swaps first: those are the ones people come here for.
       .sort((a, b) => swapsFor(b.ingredient.slug).length - swapsFor(a.ingredient.slug).length)
@@ -66,21 +56,21 @@ export default async function IngredientsPage({ params }: PageProps<"/[lang]/[pa
           card: (
             <article className="rounded-2xl border border-border bg-card p-4">
               <div className="flex gap-3">
-                <IngredientImage ingredient={ingredient} alt={t(ingredient.name, lang)} size={72} />
+                <IngredientImage ingredient={ingredient} size={72} />
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-baseline gap-x-2">
                     <h3 className="font-bold">{t(ingredient.name, lang)}</h3>
                     <span lang="de" className="text-sm text-muted">
                       {[ingredient.name.de, ...ingredient.aliases].join(" / ")}
                     </span>
-                    {asiaMarketOnly(ingredient) && (
-                      <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-white">
+                    {data.isAsiaMarketOnly(ingredient) && (
+                      <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-accent-foreground">
                         {dict.guide.asiaOnly}
                       </span>
                     )}
                   </div>
                   <div className="mt-2">
-                    <StoreBadges ingredient={ingredient} stores={data.stores} storesHref={storesHref(lang, pair)} dict={dict} />
+                    <StoreBadges ingredient={ingredient} stores={data.storeBySlug} pair={pair} lang={lang} dict={dict} />
                   </div>
                 </div>
               </div>
@@ -95,7 +85,7 @@ export default async function IngredientsPage({ params }: PageProps<"/[lang]/[pa
                 {usedIn.map((dish, i) => (
                   <span key={dish.slug}>
                     {i > 0 && ", "}
-                    <Link href={dishHref(lang, pair, dish.slug)} className="underline underline-offset-2">
+                    <Link href={routes.dish(lang, pair, dish.slug)} className="underline underline-offset-2">
                       {t(dish.name, lang)}
                     </Link>
                   </span>

@@ -12,9 +12,11 @@ const PLACEHOLDER: Record<Ingredient["category"], string> = {
   other: "🛒",
 };
 
-type Props = { ingredient: Ingredient; alt: string; size: number };
+// Decorative by default: every caller prints the ingredient name next to the photo,
+// so an alt would make screen readers say it twice. Pass `alt` only where the name isn't shown.
+type Props = { ingredient: Ingredient; size: number; alt?: string };
 
-export function IngredientImage({ ingredient, alt, size }: Props) {
+export function IngredientImage({ ingredient, size, alt = "" }: Props) {
   const box = { width: size, height: size };
   if (!ingredient.image) {
     return (
@@ -31,7 +33,8 @@ export function IngredientImage({ ingredient, alt, size }: Props) {
     <Image
       src={ingredient.image.file}
       alt={alt}
-      title={`${ingredient.image.credit}, ${ingredient.image.license}`}
+      // Browsers expose an alt="" image that has a title, so the credit tooltip only goes on meaningful ones.
+      title={alt ? `${ingredient.image.credit}, ${ingredient.image.license}` : undefined}
       width={size}
       height={size}
       style={box}

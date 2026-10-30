@@ -1,23 +1,25 @@
 // Filter state for the dish list pages. Pure and client-safe: no data loading here.
+import { diets, type Diet, type Equipment } from "./vocab";
 
 export type DishFacets = {
   costPerServingEur: number;
   timeMin: number;
-  equipment: string[];
-  diet: string[];
-  // Every required recipe ingredient (or a swap for it) is sold outside an Asia-Markt.
+  equipment: Equipment[];
+  diet: Diet[];
+  // Every required recipe ingredient is usually stocked by a supermarket or discounter,
+  // or has a close enough swap (see MIN_SWAP_FIDELITY in src/data/model.ts) that is.
   supermarketOnly: boolean;
 };
 
 export const budgetOptions = ["lt2", "2to4", "gt4"] as const;
 export const timeOptions = ["15", "30", "60"] as const;
+// Derived from `equipment`: "no-oven" hides dishes that need an oven, "one-pot" keeps one-pot dishes.
 export const kitchenOptions = ["no-oven", "one-pot"] as const;
-export const dietOptions = ["vegetarian", "no-pork", "no-beef"] as const;
+export const dietOptions = diets;
 
 type Budget = (typeof budgetOptions)[number];
 type Time = (typeof timeOptions)[number];
 type Kitchen = (typeof kitchenOptions)[number];
-type Diet = (typeof dietOptions)[number];
 
 export type Filters = {
   budget?: Budget;

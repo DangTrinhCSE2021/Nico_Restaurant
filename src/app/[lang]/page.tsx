@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DEFAULT_PAIR } from "@/domain/pairs";
+import { routes } from "@/domain/routes";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-
-// Only one country pair exists for now; the picker comes later.
-const DEFAULT_PAIR = "vn-de";
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -12,12 +11,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const dict = await getDictionary(lang);
 
   const modes = [
-    { href: `/${lang}/${DEFAULT_PAIR}/familiar`, ...dict.modes.familiar },
-    { href: `/${lang}/${DEFAULT_PAIR}/home-cooking`, ...dict.modes.homeCooking },
+    { href: routes.familiar(lang, DEFAULT_PAIR), ...dict.modes.familiar },
+    { href: routes.homeCooking(lang, DEFAULT_PAIR), ...dict.modes.homeCooking },
   ];
   const guides = [
-    { href: `/${lang}/${DEFAULT_PAIR}/ingredients`, ...dict.modes.guide },
-    { href: `/${lang}/${DEFAULT_PAIR}/stores`, ...dict.modes.stores },
+    { href: routes.ingredients(lang, DEFAULT_PAIR), ...dict.modes.guide },
+    { href: routes.stores(lang, DEFAULT_PAIR), ...dict.modes.stores },
   ];
 
   return (

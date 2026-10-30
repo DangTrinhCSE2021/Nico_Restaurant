@@ -1,10 +1,11 @@
 import { z } from "zod";
+import * as vocab from "./vocab";
 
 // Content schema for the curated seed data in content/seed/<pair>/.
 // Every file is validated against these schemas at build time and by `npm run validate`.
 // Objects are strict so a typo or a stray YAML comma fails loudly instead of being dropped.
 
-export const regionCode = z.enum(["VN", "DE"]);
+export const regionCode = z.enum(vocab.regionCodes);
 
 // Vietnamese is required; English falls back to Vietnamese; German is the in-shop name.
 export const localizedText = z.strictObject({
@@ -26,18 +27,13 @@ export const flavorProfile = z.strictObject({
   herbal: level,
 });
 
-export const dishType = z.enum([
-  "soup", "noodle", "rice", "braise", "roast", "grill", "stir-fry",
-  "salad", "bread", "dumpling", "snack", "dessert",
-]);
+export const dishType = z.enum(vocab.dishTypes);
 
-export const cookingMethod = z.enum([
-  "simmer", "braise", "roast", "grill", "fry", "stir-fry", "steam", "raw", "bake",
-]);
+export const cookingMethod = z.enum(vocab.cookingMethods);
 
-export const equipment = z.enum(["stove", "oven", "one-pot", "rice-cooker", "microwave"]);
+export const equipment = z.enum(vocab.equipment);
 
-export const diet = z.enum(["vegetarian", "no-pork", "no-beef"]);
+export const diet = z.enum(vocab.diets);
 
 const provenance = {
   source: z.enum(["curated", "llm"]),
@@ -47,7 +43,7 @@ const provenance = {
 export const storeSchema = z.strictObject({
   slug,
   name: z.string(),
-  kind: z.enum(["supermarket", "discounter", "asia-market", "online"]),
+  kind: z.enum(vocab.storeKinds),
   priceLevel: z.number().int().min(1).max(3),
   notes: localizedText,
 });
@@ -58,18 +54,20 @@ export const imageSchema = z.strictObject({
   credit: z.string().min(1),
   license: z.string().min(1),
   source: z.string().url().optional(),
+  // CC licenses ask attributions to link the license; public-domain images have none.
+  licenseUrl: z.string().url().optional(),
 });
 
 export const ingredientSchema = z.strictObject({
   slug,
   name: localizedText.required({ de: true }),
   aliases: z.array(z.string()).default([]),
-  category: z.enum(["protein", "vegetable", "herb", "sauce", "spice", "noodle-rice", "other"]),
+  category: z.enum(vocab.ingredientCategories),
   image: imageSchema.optional(),
   availability: z.array(
     z.strictObject({
       store: slug,
-      likelihood: z.enum(["usually", "sometimes", "seasonal", "rare"]),
+      likelihood: z.enum(vocab.likelihoods),
       productHint: z.string().optional(),
     }),
   ),

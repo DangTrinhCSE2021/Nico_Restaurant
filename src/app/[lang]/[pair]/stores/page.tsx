@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { listPairs, loadPair } from "@/data/load";
-import { dishHref, guideHref, homeIngredients, storeSummary } from "@/data/queries";
+import { getPair, listPairs } from "@/data/pair";
 import { storeAnchor } from "@/domain/anchors";
 import { t } from "@/domain/localize";
+import { routes } from "@/domain/routes";
 import type { Ingredient } from "@/domain/schema";
 import { hasLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/[pair]/sto
 
 export default async function StoresPage({ params }: PageProps<"/[lang]/[pair]/stores">) {
   const { lang, pair } = await params;
-  if (!hasLocale(lang) || !listPairs().includes(pair)) notFound();
+  const data = getPair(pair);
+  if (!hasLocale(lang) || !data) notFound();
   const dict = await getDictionary(lang);
-  const data = loadPair(pair);
-  const inGuide = new Set(homeIngredients(data).map((e) => e.ingredient.slug));
+  const inGuide = new Set(data.guideEntries.map((e) => e.ingredient.slug));
   const stores = [...data.stores].sort((a, b) => a.priceLevel - b.priceLevel || a.name.localeCompare(b.name));
 
   // Ingredient chip: links into the substitution guide when the ingredient is listed there.
@@ -46,7 +46,7 @@ export default async function StoresPage({ params }: PageProps<"/[lang]/[pair]/s
     return (
       <li key={ingredient.slug} className="rounded-full border border-border bg-background px-2 py-0.5 text-xs">
         {inGuide.has(ingredient.slug) ? (
-          <Link href={guideHref(locale, pair, ingredient.slug)} className="hover:underline">
+          <Link href={routes.ingredients(locale, pair, ingredient.slug)} className="hover:underline">
             {label}
           </Link>
         ) : (
@@ -65,7 +65,7 @@ export default async function StoresPage({ params }: PageProps<"/[lang]/[pair]/s
 
       <ul className="flex flex-col gap-4">
         {stores.map((store) => {
-          const summary = storeSummary(data, store.slug);
+          const summary = data.storeSummary(store);
           return (
             <li key={store.slug} id={storeAnchor(store.slug)} className="scroll-mt-4">
               <article className="rounded-2xl border border-border bg-card p-5">
@@ -73,9 +73,11 @@ export default async function StoresPage({ params }: PageProps<"/[lang]/[pair]/s
                   <h2 className="text-xl font-bold">{store.name}</h2>
                   <p className="text-sm text-muted">
                     {dict.stores.kinds[store.kind]} ·{" "}
-                    <span aria-label={dict.stores.priceLevels[store.priceLevel - 1]}>
+                    {/* aria-label on a plain span is often ignored, so screen readers get hidden text instead. */}
+                    <span className="sr-only">{dict.stores.priceLevels[store.priceLevel - 1]}</span>
+                    <span aria-hidden="true">
                       <span className="font-medium text-foreground">{"€".repeat(store.priceLevel)}</span>
-                      <span aria-hidden="true">{"€".repeat(3 - store.priceLevel)}</span>
+                      {"€".repeat(3 - store.priceLevel)}
                     </span>
                   </p>
                 </div>
@@ -97,7 +99,7 @@ export default async function StoresPage({ params }: PageProps<"/[lang]/[pair]/s
                     <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm">
                       {summary.oneTripDishes.map((dish) => (
                         <li key={dish.slug}>
-                          <Link href={dishHref(lang, pair, dish.slug)} className="underline underline-offset-2">
+                          <Link href={routes.dish(lang, pair, dish.slug)} className="underline underline-offset-2">
                             {t(dish.name, lang)}
                           </Link>
                         </li>

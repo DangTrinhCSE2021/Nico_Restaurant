@@ -47,26 +47,34 @@ export function loadPair(pairSlug: string): PairData {
     substitutions: readYaml(dir, "substitutions.yaml"),
   });
 
-  const errors = checkReferences(data);
+  const errors = checkReferences(data, pairSlug);
   if (errors.length > 0) {
     throw new Error(`Invalid seed data in ${pairSlug}:\n- ${errors.join("\n- ")}`);
   }
   return data;
 }
 
-function checkReferences(data: PairData): string[] {
+function checkReferences(data: PairData, pairSlug: string): string[] {
   const errors: string[] = [];
+  const { home, host } = data.pair;
   const stores = new Set(data.stores.map((s) => s.slug));
   const ingredients = new Set(data.ingredients.map((i) => i.slug));
   const dishes = new Map(data.dishes.map((d) => [d.slug, d]));
 
-  const dupes = (slugs: string[], kind: string) =>
-    slugs
-      .filter((s, i) => slugs.indexOf(s) !== i)
-      .forEach((s) => errors.push(`duplicate ${kind} slug "${s}"`));
-  dupes(data.stores.map((s) => s.slug), "store");
-  dupes(data.ingredients.map((i) => i.slug), "ingredient");
-  dupes(data.dishes.map((d) => d.slug), "dish");
+  // URLs use the folder name, so pair.yaml must agree with it.
+  if (data.pair.slug !== pairSlug) errors.push(`pair.yaml slug "${data.pair.slug}" must match folder "${pairSlug}"`);
+  // Every region check below would fail as well, so report just this.
+  if (home === host) return [...errors, `pair home and host are both "${home}"`];
+
+  const dupes = (keys: string[], kind: string) =>
+    keys
+      .filter((s, i) => keys.indexOf(s) !== i)
+      .forEach((s) => errors.push(`duplicate ${kind} "${s}"`));
+  dupes(data.stores.map((s) => s.slug), "store slug");
+  dupes(data.ingredients.map((i) => i.slug), "ingredient slug");
+  dupes(data.dishes.map((d) => d.slug), "dish slug");
+  // "/" can't appear in a slug, so the joined key is unambiguous.
+  dupes(data.links.map((l) => `${l.homeDish}/${l.localDish}`), "link");
 
   for (const ing of data.ingredients) {
     for (const a of ing.availability) {
@@ -88,17 +96,37 @@ function checkReferences(data: PairData): string[] {
     }
   }
 
+  const checkLinkSide = (slug: string, region: string, side: string) => {
+    const dish = dishes.get(slug);
+    if (!dish) errors.push(`link ${side} uses unknown dish "${slug}"`);
+    else if (dish.region !== region) errors.push(`link ${side} "${slug}" is not a ${region} dish`);
+  };
   for (const link of data.links) {
-    const home = dishes.get(link.homeDish);
-    const local = dishes.get(link.localDish);
-    if (home?.region !== data.pair.home) errors.push(`link homeDish "${link.homeDish}" is not a ${data.pair.home} dish`);
-    if (local?.region !== data.pair.host) errors.push(`link localDish "${link.localDish}" is not a ${data.pair.host} dish`);
+    checkLinkSide(link.homeDish, home, "homeDish");
+    checkLinkSide(link.localDish, host, "localDish");
+  }
+
+  // Host-region dishes are only listed through links ("familiar" page), so an unlinked one can't be reached.
+  const linked = new Set(data.links.map((l) => l.localDish));
+  for (const dish of data.dishes) {
+    if (dish.region === host && !linked.has(dish.slug)) {
+      errors.push(`${host} dish "${dish.slug}" has no link, so no page lists it`);
+    }
   }
 
   for (const sub of data.substitutions) {
-    if (!ingredients.has(sub.original)) errors.push(`substitution uses unknown ingredient "${sub.original}"`);
-    if (!ingredients.has(sub.substitute)) errors.push(`substitution uses unknown ingredient "${sub.substitute}"`);
-    if (sub.dish && !dishes.has(sub.dish)) errors.push(`substitution uses unknown dish "${sub.dish}"`);
+    const label = `substitution "${sub.original}" -> "${sub.substitute}"`;
+    if (!ingredients.has(sub.original)) errors.push(`${label} uses unknown ingredient "${sub.original}"`);
+    if (!ingredients.has(sub.substitute)) errors.push(`${label} uses unknown ingredient "${sub.substitute}"`);
+    if (sub.original === sub.substitute) errors.push(`${label} swaps an ingredient for itself`);
+    if (sub.dish) {
+      const dish = dishes.get(sub.dish);
+      const uses =
+        dish?.keyIngredients.includes(sub.original) ||
+        dish?.recipe?.ingredients.some((i) => i.ingredient === sub.original);
+      if (!dish) errors.push(`${label} uses unknown dish "${sub.dish}"`);
+      else if (!uses) errors.push(`${label} is for dish "${sub.dish}", which doesn't use "${sub.original}"`);
+    }
   }
 
   return errors;

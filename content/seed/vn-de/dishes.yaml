@@ -14,6 +14,7 @@
   costPerServingEur: 3.5
   # Not one-pot: a dry pan for charring and a second pot for the noodles.
   equipment: [stove]
+  diet: [no-pork]
   recipe:
     servings: 4
     ingredients:
@@ -48,6 +49,7 @@
   timeMin: 120
   costPerServingEur: 3
   equipment: [stove, one-pot]
+  diet: [no-pork]
   source: curated
   reviewStatus: draft
 
@@ -64,6 +66,7 @@
   timeMin: 120
   costPerServingEur: 2.5
   equipment: [stove, one-pot]
+  diet: [no-pork]
   source: curated
   reviewStatus: draft
 

@@ -10,6 +10,7 @@
   --primary: #2f7a4f;
   --primary-foreground: #ffffff;
   --accent: #c8402f;
+  --accent-foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +23,8 @@
     --primary: #5fb784;
     --primary-foreground: #10140f;
     --accent: #ef7a68;
+    /* White on this lighter red is ~2.7:1; the dark background gives ~6.4:1. */
+    --accent-foreground: #1b1815;
   }
 }
 
@@ -34,6 +37,7 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-be-vietnam-pro);
 }
 

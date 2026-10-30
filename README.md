@@ -25,7 +25,12 @@ content/seed/<pair>/     Curated data, one folder per country pair (only vn-de f
   links.yaml             "German dish X feels familiar to fans of VN dish Y"
   substitutions.yaml     ingredient swaps
 src/domain/schema.ts     Zod schema for all seed data (the source of truth for fields)
+src/domain/vocab.ts      allowed enum values (diet, equipment, store kinds…), Zod-free so client code can use them
+src/domain/routes.ts     every URL in the site (client-safe)
+src/domain/filters.ts    dish list filters (client-safe)
 src/data/load.ts         loads a pair and checks cross-references between files
+src/data/model.ts        indexed pair model (lookups by slug, resolved links, swaps, facets, store summaries)
+src/data/pair.ts         getPair()/listPairs(): cached per request, what pages use
 src/i18n/                locales (vi default, en) and UI string dictionaries
 src/proxy.ts             redirects "/" to the visitor's language
 src/app/[lang]/          pages

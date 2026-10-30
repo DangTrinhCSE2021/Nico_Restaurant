@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { t } from "@/domain/localize";
+import { routes } from "@/domain/routes";
 import type { Ingredient, Store } from "@/domain/schema";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -10,22 +11,21 @@ type Props = {
   ingredient: Ingredient;
   amount: string;
   optional: boolean;
-  stores: Store[];
+  stores: ReadonlyMap<string, Store>;
   swaps: Swap[];
-  guideHref: string;
-  storesHref: string;
+  pair: string;
   lang: Locale;
   dict: Dictionary;
 };
 
-export function IngredientRow({ ingredient, amount, optional, stores, swaps, guideHref, storesHref, lang, dict }: Props) {
+export function IngredientRow({ ingredient, amount, optional, stores, swaps, pair, lang, dict }: Props) {
   return (
     <li className="flex gap-3 border-b border-border py-3 last:border-b-0">
-      <IngredientImage ingredient={ingredient} alt={t(ingredient.name, lang)} size={48} />
+      <IngredientImage ingredient={ingredient} size={48} />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-baseline justify-between gap-x-3">
           <p>
-            <Link href={guideHref} className="font-medium underline-offset-4 hover:underline">
+            <Link href={routes.ingredients(lang, pair, ingredient.slug)} className="font-medium underline-offset-4 hover:underline">
               {t(ingredient.name, lang)}
             </Link>{" "}
             <span lang="de" className="text-sm text-muted">
@@ -37,7 +37,7 @@ export function IngredientRow({ ingredient, amount, optional, stores, swaps, gui
         </div>
 
         <div className="mt-2">
-          <StoreBadges ingredient={ingredient} stores={stores} storesHref={storesHref} dict={dict} />
+          <StoreBadges ingredient={ingredient} stores={stores} pair={pair} lang={lang} dict={dict} />
         </div>
 
         {swaps.length > 0 && (

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { listPairs, loadPair } from "@/data/load";
+import { allPairs } from "@/data/pair";
 import { t } from "@/domain/localize";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -17,9 +17,12 @@ export default async function CreditsPage({ params }: PageProps<"/[lang]/credits
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
   const seen = new Set<string>();
-  const ingredients = listPairs()
-    .flatMap((pair) => loadPair(pair).ingredients)
-    .filter((i) => i.image && !seen.has(i.image.file) && seen.add(i.image.file));
+  const credited = allPairs()
+    .flatMap((pair) => pair.ingredients)
+    .flatMap((ingredient) => {
+      const { image } = ingredient;
+      return image && !seen.has(image.file) && seen.add(image.file) ? [{ ingredient, image }] : [];
+    });
 
   return (
     <div className="flex flex-col gap-6 pt-6">
@@ -28,15 +31,21 @@ export default async function CreditsPage({ params }: PageProps<"/[lang]/credits
         <p className="mt-1 text-muted">{dict.credits.intro}</p>
       </header>
       <ul className="flex flex-col gap-3">
-        {ingredients.map((ingredient) => {
-          const image = ingredient.image!;
+        {credited.map(({ ingredient, image }) => {
           return (
             <li key={image.file} className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3 text-sm">
-              <IngredientImage ingredient={ingredient} alt={t(ingredient.name, lang)} size={48} />
+              <IngredientImage ingredient={ingredient} size={48} />
               <div className="min-w-0">
                 <p className="font-medium">{t(ingredient.name, lang)}</p>
                 <p className="text-muted">
-                  {image.credit} · {image.license}
+                  {image.credit} ·{" "}
+                  {image.licenseUrl ? (
+                    <a href={image.licenseUrl} target="_blank" rel="noopener noreferrer license" className="underline underline-offset-2">
+                      {image.license}
+                    </a>
+                  ) : (
+                    image.license
+                  )}
                   {image.source && (
                     <>
                       {" · "}
