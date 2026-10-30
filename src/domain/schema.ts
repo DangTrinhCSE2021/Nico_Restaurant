@@ -2,11 +2,12 @@ import { z } from "zod";
 
 // Content schema for the curated seed data in content/seed/<pair>/.
 // Every file is validated against these schemas at build time and by `npm run validate`.
+// Objects are strict so a typo or a stray YAML comma fails loudly instead of being dropped.
 
 export const regionCode = z.enum(["VN", "DE"]);
 
 // Vietnamese is required; English falls back to Vietnamese; German is the in-shop name.
-export const localizedText = z.object({
+export const localizedText = z.strictObject({
   vi: z.string().min(1),
   en: z.string().min(1).optional(),
   de: z.string().min(1).optional(),
@@ -16,7 +17,7 @@ const slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "slug must be kebab-ca
 
 // 0 = none, 3 = dominant.
 const level = z.number().int().min(0).max(3);
-export const flavorProfile = z.object({
+export const flavorProfile = z.strictObject({
   sweet: level,
   sour: level,
   salty: level,
@@ -43,7 +44,7 @@ const provenance = {
   reviewStatus: z.enum(["draft", "reviewed"]),
 };
 
-export const storeSchema = z.object({
+export const storeSchema = z.strictObject({
   slug,
   name: z.string(),
   kind: z.enum(["supermarket", "discounter", "asia-market", "online"]),
@@ -51,13 +52,13 @@ export const storeSchema = z.object({
   notes: localizedText,
 });
 
-export const ingredientSchema = z.object({
+export const ingredientSchema = z.strictObject({
   slug,
   name: localizedText.required({ de: true }),
   aliases: z.array(z.string()).default([]),
   category: z.enum(["protein", "vegetable", "herb", "sauce", "spice", "noodle-rice", "other"]),
   availability: z.array(
-    z.object({
+    z.strictObject({
       store: slug,
       likelihood: z.enum(["usually", "sometimes", "seasonal", "rare"]),
       productHint: z.string().optional(),
@@ -66,10 +67,10 @@ export const ingredientSchema = z.object({
   lastVerified: z.string().date().optional(),
 });
 
-export const recipeSchema = z.object({
+export const recipeSchema = z.strictObject({
   servings: z.number().int().positive(),
   ingredients: z.array(
-    z.object({
+    z.strictObject({
       ingredient: slug,
       amount: z.string(),
       optional: z.boolean().default(false),
@@ -78,7 +79,7 @@ export const recipeSchema = z.object({
   steps: z.array(localizedText).min(1),
 });
 
-export const dishSchema = z.object({
+export const dishSchema = z.strictObject({
   slug,
   region: regionCode,
   name: localizedText,
@@ -97,14 +98,14 @@ export const dishSchema = z.object({
 });
 
 // "German dish X feels familiar to someone who loves Vietnamese dish Y".
-export const dishLinkSchema = z.object({
+export const dishLinkSchema = z.strictObject({
   homeDish: slug,
   localDish: slug,
   explanation: localizedText,
   ...provenance,
 });
 
-export const substitutionSchema = z.object({
+export const substitutionSchema = z.strictObject({
   original: slug,
   substitute: slug,
   // Null/absent means the swap works for any dish.
@@ -114,7 +115,7 @@ export const substitutionSchema = z.object({
   ...provenance,
 });
 
-export const regionPairSchema = z.object({
+export const regionPairSchema = z.strictObject({
   slug,
   home: regionCode,
   host: regionCode,

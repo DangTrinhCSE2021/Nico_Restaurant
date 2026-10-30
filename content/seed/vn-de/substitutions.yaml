@@ -7,3 +7,70 @@
     en: European basil is sweeter with less anise note. Fine if there's no Asia-Markt nearby.
   source: curated
   reviewStatus: draft
+
+- original: fish-sauce
+  substitute: soy-sauce
+  fidelity: 2
+  notes:
+    vi: Có vị mặn và đậm nhưng không có mùi đặc trưng của nước mắm. Dùng ít hơn một chút và thêm chút đường.
+    en: Gives saltiness and depth but not the distinct fish sauce aroma. Use a little less and add a pinch of sugar.
+  source: curated
+  reviewStatus: draft
+
+- original: coconut-water
+  substitute: lemon-soda
+  dish: thit-kho-trung
+  fidelity: 3
+  notes:
+    vi: Mẹo quen thuộc của người Việt ở nước ngoài - kho bằng Sprite hoặc 7Up. Thịt vẫn ngọt và bóng, giảm đường thắng đi một nửa.
+    en: A common trick among Vietnamese abroad - braise with Sprite or 7Up. The pork is still sweet and glossy; halve the caramel sugar.
+  source: curated
+  reviewStatus: draft
+
+- original: shallot
+  substitute: onion
+  fidelity: 3
+  notes:
+    vi: Hành tây ngọt và nhiều nước hơn. Dùng khoảng nửa củ hành tây thay cho 3 củ hành tím.
+    en: Onion is sweeter and wetter. Use about half an onion for 3 shallots.
+  source: curated
+  reviewStatus: draft
+
+- original: minced-pork
+  substitute: mixed-mince
+  dish: bun-cha
+  fidelity: 4
+  notes:
+    vi: Thịt xay trộn có ở mọi siêu thị. Chả hơi chắc hơn nhưng vẫn rất ngon.
+    en: Mixed mince is in every supermarket. The patties come out a bit firmer but still taste great.
+  source: curated
+  reviewStatus: draft
+
+- original: rice-vermicelli
+  substitute: rice-noodles
+  dish: bun-cha
+  fidelity: 2
+  notes:
+    vi: Không tìm được bún thì dùng bánh phở khô. Sợi dày hơn nhưng vẫn ăn được với nước chấm.
+    en: If you can't find vermicelli, use flat rice noodles. They're thicker but still work with the dipping sauce.
+  source: curated
+  reviewStatus: draft
+
+- original: soup-chicken
+  substitute: chicken-thighs
+  dish: pho-ga
+  fidelity: 3
+  notes:
+    vi: Đùi gà dễ mua hơn và chỉ cần ninh 45 phút, nhưng nước dùng nhạt hơn. Dùng loại có xương và da.
+    en: Thighs are easier to find and only need 45 minutes, but the broth is lighter. Use bone-in, skin-on thighs.
+  source: curated
+  reviewStatus: draft
+
+- original: pickled-mustard-greens
+  substitute: sauerkraut
+  fidelity: 3
+  notes:
+    vi: Bắp cải muối Đức cũng chua lên men như dưa cải. Rửa qua một lần cho bớt chua. Sợi mềm hơn, ít giòn hơn.
+    en: German sauerkraut has the same fermented sourness. Rinse it once to tone it down. It's softer and less crunchy.
+  source: curated
+  reviewStatus: draft

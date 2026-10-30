@@ -5,3 +5,43 @@
     en: Both are slow-braised beef in a rich red sauce eaten with bread, just like bò kho.
   source: curated
   reviewStatus: draft
+
+- homeDish: thit-heo-quay
+  localDish: schweinebraten
+  explanation:
+    vi: Lớp da Kruste giòn rụm và thịt heo mềm mọng nước, rất giống thịt heo quay. Sốt hơi đậm hơn, nhưng cắn miếng da là thấy quen.
+    en: The crispy Kruste and juicy pork are very close to thịt heo quay. The gravy is heavier, but the first bite of crackling feels like home.
+  source: curated
+  reviewStatus: draft
+
+- homeDish: mi-hoanh-thanh
+  localDish: maultaschen-in-bruehe
+  explanation:
+    vi: Vỏ bột mỏng bọc nhân thịt, thả trong nước dùng trong, giống hoành thánh nước nhưng miếng to hơn. Mua sẵn, nấu 15 phút là xong.
+    en: Thin dough wrapped around a meat filling in a clear broth, like wonton soup with bigger pieces. Ready-made and done in 15 minutes.
+  source: curated
+  reviewStatus: draft
+
+- homeDish: ga-nuong
+  localDish: brathaehnchen
+  explanation:
+    vi: Gà quay da vàng giòn, thịt mềm. Không có sả và nước mắm, nhưng chấm thêm nước mắm hoặc muối tiêu chanh là rất giống gà nướng.
+    en: Golden, crisp skin and tender meat. It has no lemongrass or fish sauce, but with a fish sauce dip or salt, pepper and lime it tastes very much like gà nướng.
+  source: curated
+  reviewStatus: draft
+
+- homeDish: thit-kho-dua-cai
+  localDish: kassler-mit-sauerkraut
+  explanation:
+    vi: Thịt heo mặn hầm với bắp cải muối chua, cùng kiểu kết hợp chua, mặn và béo như thịt kho dưa cải.
+    en: Salty pork braised with sour fermented cabbage, the same sour-salty-rich combination as thịt kho dưa cải.
+  source: curated
+  reviewStatus: draft
+
+- homeDish: pho-ga
+  localDish: huehnernudelsuppe
+  explanation:
+    vi: Nước dùng gà trong, ninh từ gà mái, ăn với sợi mì. Không có hồi và gừng, nhưng là món ấm bụng giống phở gà khi trời lạnh.
+    en: Clear broth from a stewing hen with noodles. No star anise or ginger, but it is the same comforting bowl as phở gà on a cold day.
+  source: curated
+  reviewStatus: draft

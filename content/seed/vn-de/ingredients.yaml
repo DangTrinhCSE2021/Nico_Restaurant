@@ -12,7 +12,7 @@
   category: noodle-rice
   availability:
     - { store: asia-markt, likelihood: usually }
-    - { store: rewe, likelihood: sometimes, productHint: Reisnudeln, Asia-Regal }
+    - { store: rewe, likelihood: sometimes, productHint: "Reisnudeln, Asia-Regal" }
 - slug: fish-sauce
   name: { vi: Nước mắm, en: Fish sauce, de: Fischsauce }
   category: sauce
@@ -51,3 +51,245 @@
   availability:
     - { store: lidl, likelihood: usually, productHint: Topf }
     - { store: rewe, likelihood: usually, productHint: Topf }
+
+# --- Proteins
+- slug: pork-belly
+  name: { vi: Thịt ba chỉ, en: Pork belly, de: Schweinebauch }
+  category: protein
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+    - { store: asia-markt, likelihood: sometimes }
+- slug: pork-shoulder
+  name: { vi: Thịt vai heo, en: Pork shoulder, de: Schweineschulter }
+  aliases: [Schweinenacken, Schweinebraten]
+  category: protein
+  availability:
+    - { store: rewe, likelihood: usually }
+    - { store: edeka, likelihood: usually }
+    - { store: lidl, likelihood: sometimes }
+- slug: minced-pork
+  name: { vi: Thịt heo xay, en: Minced pork, de: Schweinehackfleisch }
+  aliases: [Schweinehack, Mett]
+  category: protein
+  availability:
+    - { store: rewe, likelihood: usually }
+    - { store: edeka, likelihood: usually }
+    - { store: aldi, likelihood: sometimes }
+- slug: mixed-mince
+  name: { vi: Thịt xay trộn (bò + heo), en: Mixed mince (beef and pork), de: Hackfleisch gemischt }
+  category: protein
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: chicken-thighs
+  name: { vi: Đùi gà, en: Chicken thighs, de: Hähnchenschenkel }
+  aliases: [Hähnchenoberkeulen]
+  category: protein
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: whole-chicken
+  name: { vi: Gà nguyên con, en: Whole chicken, de: Hähnchen ganz }
+  category: protein
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: soup-chicken
+  name: { vi: Gà mái (gà nấu súp), en: Stewing hen, de: Suppenhuhn }
+  category: protein
+  availability:
+    - { store: rewe, likelihood: sometimes, productHint: Tiefkühl }
+    - { store: edeka, likelihood: sometimes, productHint: Tiefkühl }
+    - { store: asia-markt, likelihood: sometimes }
+- slug: kassler
+  name: { vi: Thịt heo xông khói muối, en: Cured smoked pork, de: Kasseler }
+  aliases: [Kassler]
+  category: protein
+  availability:
+    - { store: rewe, likelihood: usually }
+    - { store: edeka, likelihood: usually }
+    - { store: lidl, likelihood: sometimes }
+- slug: eggs
+  name: { vi: Trứng gà, en: Eggs, de: Eier }
+  category: protein
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+
+# --- Vegetables and herbs
+- slug: garlic
+  name: { vi: Tỏi, en: Garlic, de: Knoblauch }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: shallot
+  name: { vi: Hành tím, en: Shallot, de: Schalotten }
+  category: vegetable
+  availability:
+    - { store: rewe, likelihood: usually }
+    - { store: edeka, likelihood: usually }
+    - { store: lidl, likelihood: sometimes }
+- slug: ginger
+  name: { vi: Gừng, en: Ginger, de: Ingwer }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: spring-onion
+  name: { vi: Hành lá, en: Spring onion, de: Frühlingszwiebeln }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+    - { store: aldi, likelihood: sometimes }
+- slug: carrot
+  name: { vi: Cà rốt, en: Carrot, de: Karotten }
+  aliases: [Möhren]
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: lettuce
+  name: { vi: Xà lách, en: Lettuce, de: Kopfsalat }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: frozen-peas-carrots
+  name: { vi: Đậu Hà Lan và cà rốt đông lạnh, en: Frozen peas and carrots, de: Erbsen und Möhren (TK) }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually, productHint: Tiefkühl }
+    - { store: aldi, likelihood: usually, productHint: Tiefkühl }
+    - { store: rewe, likelihood: usually, productHint: Tiefkühl }
+- slug: sauerkraut
+  name: { vi: Bắp cải muối chua, en: Sauerkraut, de: Sauerkraut }
+  category: vegetable
+  availability:
+    - { store: lidl, likelihood: usually, productHint: Glas oder Dose }
+    - { store: aldi, likelihood: usually, productHint: Glas oder Dose }
+    - { store: rewe, likelihood: usually, productHint: Glas oder Dose }
+- slug: pickled-mustard-greens
+  name: { vi: Dưa cải chua, en: Pickled mustard greens, de: Eingelegter Senfkohl }
+  category: vegetable
+  availability:
+    - { store: asia-markt, likelihood: usually, productHint: Glas oder Beutel }
+- slug: lemongrass
+  name: { vi: Sả, en: Lemongrass, de: Zitronengras }
+  category: herb
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: sometimes }
+- slug: cilantro
+  name: { vi: Ngò rí, en: Cilantro, de: Koriander }
+  category: herb
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: usually, productHint: Topf }
+    - { store: lidl, likelihood: sometimes }
+- slug: lime
+  name: { vi: Chanh, en: Lime, de: Limetten }
+  category: other
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: chili
+  name: { vi: Ớt tươi, en: Fresh chili, de: Chilischoten }
+  category: spice
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+    - { store: lidl, likelihood: sometimes }
+
+# --- Pantry
+- slug: rice-vermicelli
+  name: { vi: Bún khô, en: Rice vermicelli, de: Reis-Vermicelli }
+  aliases: [Reisnudeln dünn]
+  category: noodle-rice
+  availability:
+    - { store: asia-markt, likelihood: usually }
+    - { store: rewe, likelihood: sometimes, productHint: Asia-Regal }
+- slug: jasmine-rice
+  name: { vi: Gạo thơm (gạo jasmine), en: Jasmine rice, de: Jasminreis }
+  category: noodle-rice
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+    - { store: asia-markt, likelihood: usually }
+- slug: soup-noodles
+  name: { vi: Mì sợi nhỏ nấu súp, en: Soup noodles, de: Suppennudeln }
+  category: noodle-rice
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: maultaschen
+  name: { vi: Bánh Maultaschen (giống hoành thánh lớn), en: Maultaschen (Swabian dumplings), de: Maultaschen }
+  category: other
+  availability:
+    - { store: rewe, likelihood: usually, productHint: Kühlregal }
+    - { store: edeka, likelihood: usually, productHint: Kühlregal }
+    - { store: lidl, likelihood: sometimes, productHint: Kühlregal }
+    - { store: aldi, likelihood: sometimes, productHint: Kühlregal }
+- slug: broth
+  name: { vi: Nước dùng / viên súp, en: Stock, de: Brühe }
+  aliases: [Gemüsebrühe, Rinderbrühe, Brühwürfel]
+  category: other
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: soy-sauce
+  name: { vi: Nước tương, en: Soy sauce, de: Sojasauce }
+  category: sauce
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: coconut-water
+  name: { vi: Nước dừa, en: Coconut water, de: Kokoswasser }
+  category: other
+  availability:
+    - { store: rewe, likelihood: usually, productHint: Getränke }
+    - { store: asia-markt, likelihood: usually }
+    - { store: lidl, likelihood: sometimes }
+- slug: lemon-soda
+  name: { vi: "Nước ngọt chanh (Sprite, 7Up)", en: Lemon-lime soda, de: Zitronenlimonade }
+  category: other
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: sugar
+  name: { vi: Đường, en: Sugar, de: Zucker }
+  category: other
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: black-pepper
+  name: { vi: Tiêu, en: Black pepper, de: Schwarzer Pfeffer }
+  category: spice
+  availability:
+    - { store: lidl, likelihood: usually }
+    - { store: aldi, likelihood: usually }
+    - { store: rewe, likelihood: usually }
+- slug: caraway
+  name: { vi: Hạt caraway (thì là Ba Tư), en: Caraway seeds, de: Kümmel }
+  category: spice
+  availability:
+    - { store: rewe, likelihood: usually, productHint: Gewürzregal }
+    - { store: edeka, likelihood: usually, productHint: Gewürzregal }
+    - { store: lidl, likelihood: sometimes }

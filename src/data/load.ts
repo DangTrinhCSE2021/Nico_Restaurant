@@ -13,7 +13,7 @@ import {
 
 const SEED_DIR = path.join(process.cwd(), "content", "seed");
 
-const pairDataSchema = z.object({
+const pairDataSchema = z.strictObject({
   pair: regionPairSchema,
   stores: z.array(storeSchema),
   ingredients: z.array(ingredientSchema),

@@ -20,7 +20,7 @@
       - { ingredient: rice-noodles, amount: 400 g }
       - { ingredient: onion, amount: "2" }
       - { ingredient: star-anise, amount: "4" }
-      - { ingredient: fish-sauce, amount: 3 EL }
+      - { ingredient: fish-sauce, amount: 45 ml }
       - { ingredient: thai-basil, amount: 1 bunch, optional: true }
     steps:
       - vi: Chần bò qua nước sôi 5 phút, đổ nước, rửa sạch.
@@ -43,7 +43,7 @@
   dishType: braise
   methods: [braise]
   flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 1, herbal: 1 }
-  keyIngredients: [beef-shank, star-anise, fish-sauce]
+  keyIngredients: [beef-shank, lemongrass, star-anise, fish-sauce]
   timeMin: 120
   costPerServingEur: 3
   equipment: [stove, one-pot]
@@ -63,5 +63,353 @@
   timeMin: 120
   costPerServingEur: 2.5
   equipment: [stove, one-pot]
+  source: curated
+  reviewStatus: draft
+
+# ===== Vietnamese dishes with a recipe (home cooking in Germany) =====
+
+- slug: thit-kho-trung
+  region: VN
+  name: { vi: Thịt kho trứng, en: Caramelized pork and eggs }
+  description:
+    vi: Thịt ba chỉ kho với trứng trong nước dừa, mặn ngọt, ăn với cơm trắng. Nấu một nồi ăn được mấy ngày.
+    en: Pork belly and eggs braised in coconut water, sweet and salty, eaten with rice. One pot lasts several days.
+  dishType: braise
+  methods: [braise]
+  flavor: { sweet: 2, sour: 0, salty: 3, umami: 3, spicy: 0, herbal: 0 }
+  keyIngredients: [pork-belly, eggs, coconut-water, fish-sauce]
+  timeMin: 105
+  costPerServingEur: 2.5
+  equipment: [stove, one-pot]
+  recipe:
+    servings: 4
+    ingredients:
+      - { ingredient: pork-belly, amount: 600 g }
+      - { ingredient: eggs, amount: "4" }
+      - { ingredient: coconut-water, amount: 500 ml }
+      - { ingredient: fish-sauce, amount: 45 ml }
+      - { ingredient: sugar, amount: 2 tbsp }
+      - { ingredient: shallot, amount: "3" }
+      - { ingredient: garlic, amount: 3 cloves }
+      - { ingredient: black-pepper, amount: 1 tsp }
+    steps:
+      - vi: Cắt thịt thành miếng khoảng 4 cm. Ướp với nước mắm, hành tím, tỏi băm và tiêu trong 30 phút.
+        en: Cut the pork into roughly 4 cm pieces. Marinate with fish sauce, chopped shallot, garlic and pepper for 30 minutes.
+      - vi: Luộc trứng 8 phút, ngâm nước lạnh rồi bóc vỏ.
+        en: Boil the eggs for 8 minutes, cool in cold water and peel.
+      - vi: Thắng đường trong nồi đến khi có màu cánh gián, cho thịt vào đảo cho săn.
+        en: Melt the sugar in the pot until it turns amber, then add the pork and stir until it firms up.
+      - vi: Đổ nước dừa ngập thịt, đun sôi rồi hạ nhỏ lửa, kho khoảng 1 giờ, vớt bọt.
+        en: Pour in coconut water to cover, bring to a boil, then simmer on low for about 1 hour, skimming the foam.
+      - vi: Cho trứng vào, kho thêm 30 phút đến khi nước sánh lại. Ăn với cơm.
+        en: Add the eggs and simmer another 30 minutes until the sauce thickens. Serve with rice.
+  source: curated
+  reviewStatus: draft
+
+- slug: bun-cha
+  region: VN
+  name: { vi: Bún chả, en: Grilled pork with rice noodles }
+  description:
+    vi: Chả viên và thịt nướng ngâm trong nước mắm chua ngọt, ăn với bún và rau sống. Không cần vỉ nướng, dùng chảo hoặc lò.
+    en: Grilled pork patties and slices in a sweet-sour fish sauce, with rice noodles and fresh greens. A pan or oven grill works fine.
+  dishType: noodle
+  methods: [grill, fry]
+  flavor: { sweet: 2, sour: 2, salty: 2, umami: 3, spicy: 1, herbal: 2 }
+  keyIngredients: [pork-belly, minced-pork, rice-vermicelli, fish-sauce]
+  timeMin: 90
+  costPerServingEur: 3.5
+  equipment: [stove]
+  recipe:
+    servings: 3
+    ingredients:
+      - { ingredient: pork-belly, amount: "300 g, thinly sliced" }
+      - { ingredient: minced-pork, amount: 300 g }
+      - { ingredient: rice-vermicelli, amount: 300 g }
+      - { ingredient: fish-sauce, amount: 75 ml }
+      - { ingredient: sugar, amount: 4 tbsp }
+      - { ingredient: shallot, amount: "2" }
+      - { ingredient: garlic, amount: 4 cloves }
+      - { ingredient: lime, amount: "1" }
+      - { ingredient: carrot, amount: "1" }
+      - { ingredient: chili, amount: "1", optional: true }
+      - { ingredient: lettuce, amount: 1 head }
+      - { ingredient: cilantro, amount: 1 bunch, optional: true }
+    steps:
+      - vi: Ướp thịt ba chỉ thái mỏng và thịt xay với 2 muỗng nước mắm, 1 muỗng đường, hành tím, tỏi băm và tiêu trong ít nhất 1 giờ. Vo thịt xay thành viên dẹt.
+        en: Marinate the sliced belly and the mince with 2 tbsp fish sauce, 1 tbsp sugar, shallot, garlic and pepper for at least 1 hour. Shape the mince into flat patties.
+      - vi: Pha nước chấm - 3 muỗng nước mắm, 3 muỗng đường, 6 muỗng nước ấm, nước cốt chanh, tỏi và ớt. Thêm cà rốt thái mỏng.
+        en: Make the dipping sauce - 3 tbsp fish sauce, 3 tbsp sugar, 6 tbsp warm water, lime juice, garlic and chili. Add thinly sliced carrot.
+      - vi: Luộc bún theo hướng dẫn trên gói, xả nước lạnh, để ráo.
+        en: Cook the noodles as the packet says, rinse in cold water and drain.
+      - vi: Áp chảo thịt và chả ở lửa lớn, hoặc nướng bằng chế độ Grill của lò, đến khi xém cạnh.
+        en: Sear the meat and patties in a hot pan, or use the oven's grill setting, until charred at the edges.
+      - vi: Cho thịt vào bát nước chấm, ăn với bún và rau sống.
+        en: Put the meat into bowls of dipping sauce and eat with the noodles and greens.
+  source: curated
+  reviewStatus: draft
+
+- slug: ga-kho-gung
+  region: VN
+  name: { vi: Gà kho gừng, en: Ginger braised chicken }
+  description:
+    vi: Đùi gà kho gừng mặn ngọt, cay ấm. Nguyên liệu có hết ở Lidl hoặc Aldi, trừ nước mắm.
+    en: Chicken thighs braised with ginger, salty-sweet and warming. Everything except the fish sauce is at Lidl or Aldi.
+  dishType: braise
+  methods: [braise]
+  flavor: { sweet: 2, sour: 0, salty: 3, umami: 2, spicy: 1, herbal: 1 }
+  keyIngredients: [chicken-thighs, ginger, fish-sauce]
+  timeMin: 60
+  costPerServingEur: 2
+  equipment: [stove, one-pot]
+  diet: [no-pork, no-beef]
+  recipe:
+    servings: 3
+    ingredients:
+      - { ingredient: chicken-thighs, amount: 700 g }
+      - { ingredient: ginger, amount: 40 g }
+      - { ingredient: fish-sauce, amount: 45 ml }
+      - { ingredient: sugar, amount: 1.5 tbsp }
+      - { ingredient: shallot, amount: "3" }
+      - { ingredient: garlic, amount: 2 cloves }
+      - { ingredient: black-pepper, amount: 1 tsp }
+      - { ingredient: spring-onion, amount: "2", optional: true }
+    steps:
+      - vi: Chặt gà miếng vừa ăn, ướp với nước mắm, hành tím, tỏi và tiêu trong 20 phút.
+        en: Cut the chicken into bite-sized pieces and marinate with fish sauce, shallot, garlic and pepper for 20 minutes.
+      - vi: Gừng thái sợi. Thắng đường với chút dầu đến khi vàng nâu, cho gừng vào phi thơm.
+        en: Cut the ginger into thin strips. Caramelize the sugar with a little oil until golden brown, then fry the ginger until fragrant.
+      - vi: Cho gà vào đảo đến khi săn, thêm 100 ml nước, đậy nắp kho nhỏ lửa 25 phút.
+        en: Add the chicken and stir until browned, add 100 ml water, cover and simmer on low for 25 minutes.
+      - vi: Mở nắp, đun cho nước kho sệt lại. Rắc tiêu và hành lá, ăn với cơm.
+        en: Uncover and reduce until the sauce is sticky. Top with pepper and spring onion and serve with rice.
+  source: curated
+  reviewStatus: draft
+
+- slug: com-rang
+  region: VN
+  name: { vi: Cơm rang trứng, en: Egg fried rice }
+  description:
+    vi: Món cứu đói 20 phút từ cơm nguội, trứng và rau đông lạnh. Chỉ cần một chảo.
+    en: A 20-minute rescue meal from leftover rice, eggs and frozen veg. One pan is all you need.
+  dishType: rice
+  methods: [stir-fry]
+  flavor: { sweet: 0, sour: 0, salty: 2, umami: 2, spicy: 0, herbal: 1 }
+  keyIngredients: [jasmine-rice, eggs, frozen-peas-carrots, soy-sauce]
+  timeMin: 20
+  costPerServingEur: 1.2
+  equipment: [stove]
+  diet: [vegetarian, no-pork, no-beef]
+  recipe:
+    servings: 2
+    ingredients:
+      - { ingredient: jasmine-rice, amount: "400 g cooked, from yesterday" }
+      - { ingredient: eggs, amount: "2" }
+      - { ingredient: frozen-peas-carrots, amount: 150 g }
+      - { ingredient: garlic, amount: 2 cloves }
+      - { ingredient: soy-sauce, amount: 2 tbsp }
+      - { ingredient: spring-onion, amount: "2" }
+      - { ingredient: black-pepper, amount: 1 pinch }
+    steps:
+      - vi: Dùng cơm nguội để qua đêm. Cơm mới nấu dễ bị nhão.
+        en: Use rice cooked the day before. Fresh rice turns mushy.
+      - vi: Đánh trứng, chiên sơ cho chín tới rồi để riêng.
+        en: Beat the eggs, scramble them until just set and put them aside.
+      - vi: Phi tỏi, cho rau đông lạnh vào xào 2 phút.
+        en: Fry the garlic, add the frozen vegetables and stir-fry for 2 minutes.
+      - vi: Cho cơm vào, lửa lớn, đảo và tán cơm cho tơi trong 5 phút.
+        en: Add the rice on high heat, stirring and breaking up clumps for 5 minutes.
+      - vi: Nêm nước tương, cho trứng và hành lá vào, đảo đều.
+        en: Season with soy sauce, stir in the egg and spring onion.
+  source: curated
+  reviewStatus: draft
+
+- slug: pho-ga
+  region: VN
+  name: { vi: Phở gà, en: Chicken pho }
+  description:
+    vi: Nước dùng gà trong, thơm gừng và hồi, nhẹ hơn phở bò và rẻ hơn.
+    en: Clear chicken broth with ginger and star anise, lighter and cheaper than beef pho.
+  dishType: noodle
+  methods: [simmer]
+  flavor: { sweet: 1, sour: 1, salty: 2, umami: 2, spicy: 0, herbal: 2 }
+  keyIngredients: [soup-chicken, rice-noodles, ginger, star-anise]
+  timeMin: 150
+  costPerServingEur: 2.5
+  equipment: [stove, one-pot]
+  diet: [no-pork, no-beef]
+  recipe:
+    servings: 4
+    ingredients:
+      - { ingredient: soup-chicken, amount: 1 (about 1.2 kg) }
+      - { ingredient: rice-noodles, amount: 400 g }
+      - { ingredient: onion, amount: "2" }
+      - { ingredient: ginger, amount: 30 g }
+      - { ingredient: star-anise, amount: "3" }
+      - { ingredient: fish-sauce, amount: 45 ml }
+      - { ingredient: spring-onion, amount: "3" }
+      - { ingredient: cilantro, amount: 1 bunch, optional: true }
+      - { ingredient: lime, amount: "1" }
+    steps:
+      - vi: Nướng hành tây và gừng trên chảo khô đến khi xém vỏ. Rang hoa hồi cho thơm.
+        en: Char the onion and ginger in a dry pan. Toast the star anise until fragrant.
+      - vi: Cho gà vào nồi với 3 lít nước lạnh, đun sôi và vớt bọt.
+        en: Put the chicken in a pot with 3 L cold water, bring to a boil and skim.
+      - vi: Thêm hành, gừng, hồi, ninh nhỏ lửa khoảng 1,5 đến 2 giờ (gà mái cần lâu hơn gà thường).
+        en: Add the onion, ginger and star anise and simmer gently for 1.5 to 2 hours (a stewing hen needs longer than a regular chicken).
+      - vi: Vớt gà ra, xé thịt. Nêm nước dùng bằng nước mắm, chút muối và đường.
+        en: Take out the chicken and shred the meat. Season the broth with fish sauce, a little salt and sugar.
+      - vi: Trụng bánh phở, xếp thịt gà, chan nước dùng, thêm hành lá, ngò và chanh.
+        en: Cook the noodles, top with chicken, ladle over the broth and add spring onion, cilantro and lime.
+  source: curated
+  reviewStatus: draft
+
+# ===== Vietnamese reference dishes (what German dishes are compared to) =====
+
+- slug: thit-heo-quay
+  region: VN
+  name: { vi: Thịt heo quay, en: Crispy roast pork }
+  description:
+    vi: Ba chỉ quay da giòn rụm, thịt mềm, chấm nước mắm hoặc ăn với bánh mì.
+    en: Roast pork belly with crackling skin and tender meat, dipped in fish sauce or eaten in a baguette.
+  dishType: roast
+  methods: [roast]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 0, herbal: 0 }
+  keyIngredients: [pork-belly]
+  timeMin: 150
+  costPerServingEur: 3
+  equipment: [oven]
+  source: curated
+  reviewStatus: draft
+
+- slug: mi-hoanh-thanh
+  region: VN
+  name: { vi: Mì hoành thánh, en: Wonton noodle soup }
+  description:
+    vi: Hoành thánh nhân thịt trong nước dùng trong, ăn kèm mì và hành lá.
+    en: Pork-filled wontons in a clear broth with noodles and spring onion.
+  dishType: soup
+  methods: [simmer]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 0, herbal: 1 }
+  keyIngredients: [minced-pork, broth, spring-onion]
+  timeMin: 60
+  costPerServingEur: 2.5
+  equipment: [stove]
+  source: curated
+  reviewStatus: draft
+
+- slug: ga-nuong
+  region: VN
+  name: { vi: Gà nướng, en: Vietnamese grilled chicken }
+  description:
+    vi: Gà ướp sả, tỏi, nước mắm rồi nướng vàng da, ăn với cơm hoặc xôi.
+    en: Chicken marinated with lemongrass, garlic and fish sauce, grilled until golden, eaten with rice.
+  dishType: grill
+  methods: [grill, roast]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 2, spicy: 1, herbal: 2 }
+  keyIngredients: [chicken-thighs, lemongrass, garlic, fish-sauce]
+  timeMin: 60
+  costPerServingEur: 2
+  equipment: [oven]
+  diet: [no-pork, no-beef]
+  source: curated
+  reviewStatus: draft
+
+- slug: thit-kho-dua-cai
+  region: VN
+  name: { vi: Thịt kho dưa cải, en: Pork braised with pickled mustard greens }
+  description:
+    vi: Thịt ba chỉ kho với dưa cải chua, vị mặn, chua và béo hòa quyện.
+    en: Pork belly braised with sour pickled mustard greens, salty, tangy and rich at once.
+  dishType: braise
+  methods: [braise]
+  flavor: { sweet: 1, sour: 2, salty: 2, umami: 2, spicy: 0, herbal: 0 }
+  keyIngredients: [pork-belly, pickled-mustard-greens, fish-sauce]
+  timeMin: 75
+  costPerServingEur: 2
+  equipment: [stove, one-pot]
+  source: curated
+  reviewStatus: draft
+
+# ===== German dishes (familiar local food) =====
+
+- slug: schweinebraten
+  region: DE
+  name: { vi: Thịt heo quay kiểu Bayern, en: Bavarian roast pork, de: Schweinebraten mit Kruste }
+  description:
+    vi: Vai heo quay trong lò với lớp da giòn (Kruste), sốt nâu đậm, thường ăn với Knödel.
+    en: Oven-roast pork shoulder with crackling (Kruste) and a dark gravy, usually served with dumplings.
+  dishType: roast
+  methods: [roast]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 3, spicy: 0, herbal: 1 }
+  keyIngredients: [pork-shoulder, caraway, onion]
+  timeMin: 150
+  costPerServingEur: 3
+  equipment: [oven]
+  source: curated
+  reviewStatus: draft
+
+- slug: maultaschen-in-bruehe
+  region: DE
+  name: { vi: Maultaschen nấu súp, en: Maultaschen in broth, de: Maultaschen in der Brühe }
+  description:
+    vi: Bánh Maultaschen vùng Swabia nhân thịt và rau bina, thả trong nước dùng nóng. Mua sẵn ở quầy lạnh, nấu 15 phút.
+    en: Swabian pasta pockets filled with meat and spinach, served in hot broth. Buy them ready-made in the chilled aisle, done in 15 minutes.
+  dishType: dumpling
+  methods: [simmer]
+  flavor: { sweet: 0, sour: 0, salty: 2, umami: 3, spicy: 0, herbal: 1 }
+  keyIngredients: [maultaschen, broth, spring-onion]
+  timeMin: 15
+  costPerServingEur: 2
+  equipment: [stove]
+  source: curated
+  reviewStatus: draft
+
+- slug: brathaehnchen
+  region: DE
+  name: { vi: Gà quay kiểu Đức, en: German roast chicken, de: Brathähnchen }
+  description:
+    vi: Gà nguyên con xoa paprika và muối, quay đến khi da vàng giòn. Thường bán ở xe gà quay (Hähnchengrill) ngoài chợ.
+    en: Whole chicken rubbed with paprika and salt, roasted until the skin is golden and crisp. Often sold at market rotisserie trucks.
+  dishType: roast
+  methods: [roast]
+  flavor: { sweet: 0, sour: 0, salty: 2, umami: 2, spicy: 1, herbal: 1 }
+  keyIngredients: [whole-chicken, paprika-powder]
+  timeMin: 80
+  costPerServingEur: 2
+  equipment: [oven]
+  diet: [no-pork, no-beef]
+  source: curated
+  reviewStatus: draft
+
+- slug: kassler-mit-sauerkraut
+  region: DE
+  name: { vi: Thịt Kasseler với bắp cải muối, en: Kassler with sauerkraut, de: Kasseler mit Sauerkraut }
+  description:
+    vi: Thịt heo muối xông khói hầm với bắp cải muối chua, ăn với khoai tây.
+    en: Cured smoked pork braised with sauerkraut, served with potatoes.
+  dishType: braise
+  methods: [braise]
+  flavor: { sweet: 1, sour: 2, salty: 3, umami: 2, spicy: 0, herbal: 1 }
+  keyIngredients: [kassler, sauerkraut, onion]
+  timeMin: 45
+  costPerServingEur: 2.5
+  equipment: [stove, one-pot]
+  source: curated
+  reviewStatus: draft
+
+- slug: huehnernudelsuppe
+  region: DE
+  name: { vi: Súp gà mì, en: Chicken noodle soup, de: Hühnernudelsuppe }
+  description:
+    vi: Súp gà nấu từ gà mái với cà rốt và mì sợi nhỏ. Người Đức hay ăn khi bị cảm.
+    en: Soup from a stewing hen with carrots and thin noodles. What Germans eat when they have a cold.
+  dishType: soup
+  methods: [simmer]
+  flavor: { sweet: 1, sour: 0, salty: 2, umami: 2, spicy: 0, herbal: 1 }
+  keyIngredients: [soup-chicken, soup-noodles, carrot]
+  timeMin: 120
+  costPerServingEur: 1.5
+  equipment: [stove, one-pot]
+  diet: [no-pork, no-beef]
   source: curated
   reviewStatus: draft
