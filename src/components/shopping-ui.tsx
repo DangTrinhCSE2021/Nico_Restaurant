@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { routes } from "@/domain/routes";
 import { buildList, listToText, type ShopData } from "@/domain/shopping";
+import { isSupermarketKind } from "@/domain/vocab";
 import type { Locale } from "@/i18n/config";
 import { toggleIn, updateShopping, useShopping } from "@/lib/shopping-store";
 
@@ -64,7 +65,7 @@ export function ShoppingHeaderLink({ href, label }: { href: string; label: strin
     >
       🛒
       {dishes.length > 0 && (
-        <span className="absolute right-0 top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-white">
+        <span className="absolute right-0 top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-accent-foreground">
           {dishes.length}
         </span>
       )}
@@ -82,7 +83,7 @@ export function ShoppingListView({ data, labels, lang, pair }: ViewProps) {
   const groups = buildList(data, state.dishes, state.preferred);
   const allItems = groups.flatMap((g) => g.items);
   const done = allItems.filter((i) => state.checked.includes(i.ingredient.slug)).length;
-  const supermarkets = data.stores.filter((s) => s.kind !== "asia-market");
+  const supermarkets = data.stores.filter((s) => isSupermarketKind(s.kind));
 
   if (dishes.length === 0) {
     return (

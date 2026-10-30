@@ -2,15 +2,13 @@ import type { DishFacets } from "@/domain/filters";
 import { t } from "@/domain/localize";
 import type { Dish, DishLink, Ingredient, RegionPair, Store, Substitution } from "@/domain/schema";
 import type { ShopData } from "@/domain/shopping";
-import type { StoreKind } from "@/domain/vocab";
+import { isSupermarketKind } from "@/domain/vocab";
 import type { Locale } from "@/i18n/config";
 import type { PairData } from "./load";
 
 // Indexed, cross-linked view of one pair's seed data, plus the shopping rules that pages share.
 // Pure (no fs, no React), so `npm run validate` can build it outside Next.
 
-// "Regular supermarket" for the supermarket filter. Online shops and Asia-Märkte don't count.
-export const SUPERMARKET_KINDS: readonly StoreKind[] = ["supermarket", "discounter"];
 // Lower-fidelity swaps change the dish too much to count as "you can cook it from here".
 export const MIN_SWAP_FIDELITY = 3;
 
@@ -108,7 +106,7 @@ export function buildModel(data: PairData): PairModel {
           ),
       );
 
-  const isSupermarket = (s: Store) => SUPERMARKET_KINDS.includes(s.kind);
+  const isSupermarket = (s: Store) => isSupermarketKind(s.kind);
 
   const facets = new Map<string, DishFacets>(
     data.dishes.map((d) => [

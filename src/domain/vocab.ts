@@ -20,6 +20,11 @@ export const ingredientCategories = ["protein", "vegetable", "herb", "sauce", "s
 
 export const likelihoods = ["usually", "sometimes", "seasonal", "rare"] as const;
 
+// "Regular supermarket": what the supermarket filter, one-trip lists and the shopping
+// list's store picker count. Online shops and Asia-Märkte don't.
+export const supermarketKinds: readonly StoreKind[] = ["supermarket", "discounter"];
+export const isSupermarketKind = (kind: string) => (supermarketKinds as readonly string[]).includes(kind);
+
 export type Equipment = (typeof equipment)[number];
 export type Diet = (typeof diets)[number];
 export type StoreKind = (typeof storeKinds)[number];

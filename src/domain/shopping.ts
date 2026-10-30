@@ -1,4 +1,5 @@
 // Shopping list logic. Pure and client-safe: the page passes in a compact data snapshot.
+import { isSupermarketKind } from "./vocab";
 
 export type ShopStore = { slug: string; name: string; kind: string; priceLevel: number };
 export type ShopIngredient = {
@@ -27,10 +28,12 @@ export type ListGroup = { store: ShopStore | null; items: ListItem[] };
 const LIKELIHOOD_ORDER = ["usually", "sometimes", "seasonal", "rare"];
 
 // Where to buy: the preferred supermarket if it usually has it, then the cheapest other
-// supermarket that usually has it, then the Asia-Markt; "sometimes" only as a last resort.
+// supermarket that usually has it, then the Asia-Markt, then online; "sometimes" only as a last resort.
+const storeTier = (s: ShopStore, preferred?: string) =>
+  s.slug === preferred ? 0 : isSupermarketKind(s.kind) ? 1 : s.kind === "asia-market" ? 2 : 3;
+
 export function pickStore(ingredient: ShopIngredient, stores: ShopStore[], preferred?: string): ShopStore | null {
-  const rank = (s: ShopStore) =>
-    (s.slug === preferred ? 0 : s.kind === "asia-market" ? 2 : 1) * 10 + s.priceLevel;
+  const rank = (s: ShopStore) => storeTier(s, preferred) * 10 + s.priceLevel;
   for (const likelihood of LIKELIHOOD_ORDER) {
     const candidates = ingredient.availability
       .filter((a) => a.likelihood === likelihood)
@@ -65,9 +68,8 @@ export function buildList(data: ShopData, dishSlugs: string[], preferred?: strin
     groups.set(key, group);
   }
 
-  // Preferred store first, Asia-Markt after supermarkets, unknown last; required items before optional.
-  const order = (g: ListGroup) =>
-    !g.store ? 99 : g.store.slug === preferred ? 0 : g.store.kind === "asia-market" ? 50 : g.store.priceLevel;
+  // Same order as pickStore, unknown store last; required items before optional.
+  const order = (g: ListGroup) => (g.store ? storeTier(g.store, preferred) * 10 + g.store.priceLevel : 99);
   return [...groups.values()]
     .sort((a, b) => order(a) - order(b))
     .map((g) => ({ ...g, items: g.items.sort((a, b) => Number(a.optional) - Number(b.optional)) }));
